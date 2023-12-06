@@ -1,25 +1,226 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Box,
+  Container,
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+} from "@mui/material";
+import LandingPage from "./pages/landing/landing";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { HomePage } from './pages/HomePage/HomePage';
+import { MainLayout } from "./components/layouts/MainLayout";
+import { SecondaryLayout } from "./components/layouts/SecondaryLayout";
+import { BookValuation } from "./pages/book_valuation/book_valuation";
+import { BookValuationRegistration } from "./pages/book_valuation/book_valuation_register";
+import { AuthContainer } from "./pages/user_account/signin_page";
+import FlexibleImgComponent from "./components/presentational/image/flexible_img";
+import LoginMemberShip from "./assets/images/login_membership.jpg";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BookValuationRegistrationConfirmation } from "./pages/book_valuation/book_valuation_confirmation";
+import FindProperties from "./pages/find_properties/findProperties";
+import PropertyDetails from "./pages/property_detail/propertyDetails";
+import FreeLetsHub from "./pages/landlord_tenant/landlordTenant";
+import AdminDashboard from "pages/admin_dashboard/drawer";
+import { AdminDrawer } from "pages/admin_dashboard/adminDrawer";
+import { AdminProperties } from "pages/admin_properties/adminProperties";
+import { AdminValuation } from "pages/admin_valuations/adminValuations";
+import AddProperties from "pages/admin_properties/addProperties";
+import AdminDashboardLayout from "components/layouts/adminLayout";
+import { SnackbarProvider } from "notistack";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import EditProperty from "pages/admin_properties/editProperties";
+import { PrivateWrapper } from "components/common/privateRoute";
 
-function App() {
+function About() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>About Page</h2>
+      <p>Welcome to the about page!</p>
     </div>
+  );
+}
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#948c1e",
+    },
+    secondary: {
+      main: "#ff8800",
+    },
+    text: {
+      primary: "#333",
+    },
+    action: {
+      disabledBackground: "#ccc", // Custom disabled background color
+      disabled: "#888", // Custom disabled text color
+    },
+  },
+  typography: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontSize: 16,
+    fontWeightRegular: 400,
+    fontWeightBold: 700,
+    h1: {
+      fontSize: "2rem",
+      fontWeight: 700,
+    },
+    // ... other typography options
+  },
+  shape: {
+    borderRadius: 8,
+  },
+  spacing: 8,
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
+}); // Create your theme instance
+
+function Contained({ children }: { children: JSX.Element }): JSX.Element {
+  return <Container>{children}</Container>;
+}
+
+function UnContained({ children }: { children: JSX.Element }): JSX.Element {
+  return <Box>{children}</Box>;
+}
+
+const queryClient = new QueryClient();
+
+function App(): JSX.Element {
+  return (
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider>
+        <CssBaseline />
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <MainLayout>
+                    <UnContained>
+                      <LandingPage />
+                    </UnContained>
+                  </MainLayout>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <Contained>
+                    <About />
+                  </Contained>
+                }
+              />
+              <Route
+                path="/book_valuation"
+                element={
+                  <SecondaryLayout>
+                    <BookValuation />
+                  </SecondaryLayout>
+                }
+              />
+              <Route
+                path="/user_account"
+                element={
+                  <SecondaryLayout
+                    dynamicComponent={
+                      <FlexibleImgComponent
+                        alt="login"
+                        style={{ height: "300px" }}
+                        imageUrl={LoginMemberShip}
+                      />
+                    }
+                  >
+                    <AuthContainer />
+                  </SecondaryLayout>
+                }
+              />
+
+              <Route
+                path="/book_valuation_registration"
+                element={
+                  <SecondaryLayout>
+                    <BookValuationRegistration />
+                  </SecondaryLayout>
+                }
+              />
+
+              <Route
+                path="/book_valuation_registration_confirmation"
+                element={
+                  <SecondaryLayout>
+                    <BookValuationRegistrationConfirmation />
+                  </SecondaryLayout>
+                }
+              />
+
+              <Route
+                path="/find_properties"
+                element={
+                  <MainLayout>
+                    <UnContained>
+                      <FindProperties />
+                    </UnContained>
+                  </MainLayout>
+                }
+              />
+
+              <Route
+                path="/property_details/:property_id"
+                element={
+                  <MainLayout>
+                    <UnContained>
+                      <PropertyDetails />
+                    </UnContained>
+                  </MainLayout>
+                }
+              />
+              <Route
+                path="/landlord_tenant/:subRoute"
+                element={
+                  <MainLayout>
+                    <UnContained>
+                      <FreeLetsHub />
+                    </UnContained>
+                  </MainLayout>
+                }
+              />
+              <Route
+                path="/admin_dashboard"
+                element={
+                  <>
+                    <AdminDashboardLayout />
+                  </>
+                }
+              >
+                <Route index path="valuations" element={<AdminValuation />} />
+                <Route
+                  path="properties"
+                  element={
+                    <PrivateWrapper>
+                      <AdminProperties />
+                    </PrivateWrapper>
+                  }
+                />
+                <Route path="add_properties" element={<AddProperties />} />
+                <Route
+                  path="edit_properties/:property_id"
+                  element={<EditProperty />}
+                />
+              </Route>
+            </Routes>
+            <ReactQueryDevtools />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </SnackbarProvider>
+    </ThemeProvider>
   );
 }
 
