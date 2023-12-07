@@ -22,7 +22,13 @@ import Footer from "components/layouts/footer/footer";
 import { AdminValuation } from "pages/admin_valuations/adminValuations";
 import { AdminProperties } from "pages/admin_properties/adminProperties";
 import { Drawer } from "@mui/material";
-import { Outlet, useLocation, useNavigate, useParams, useRoutes } from "react-router-dom";
+import {
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+  useRoutes,
+} from "react-router-dom";
 import AddProperties from "pages/admin_properties/addProperties";
 
 const drawerWidth = 240;
@@ -109,10 +115,9 @@ function CustomDrawer({ selectedItem, open, handleDrawerClose }: any) {
           onClick={() => navigate("/admin_dashboard/valuations")}
           disablePadding
           sx={{
-            backgroundColor:
-              selectedItem.includes("valuations")
-                ? lighten(theme.palette.primary.light, 0.6)
-                : "inherit",
+            backgroundColor: selectedItem.includes("valuations")
+              ? lighten(theme.palette.primary.light, 0.6)
+              : "inherit",
           }}
         >
           <ListItemButton>
@@ -127,8 +132,25 @@ function CustomDrawer({ selectedItem, open, handleDrawerClose }: any) {
           onClick={() => navigate("/admin_dashboard/properties")}
           disablePadding
           sx={{
+            backgroundColor: selectedItem.includes("properties")
+              ? lighten(theme.palette.primary.light, 0.6)
+              : "inherit",
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Properties"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem
+          onClick={() => navigate("/admin_dashboard/inspections")}
+          disablePadding
+          sx={{
             backgroundColor:
-            selectedItem.includes("properties")
+              selectedItem === "inspections"
                 ? lighten(theme.palette.primary.light, 0.6)
                 : "inherit",
           }}
@@ -137,7 +159,25 @@ function CustomDrawer({ selectedItem, open, handleDrawerClose }: any) {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary={"Properties"} />
+            <ListItemText primary={"Inspections"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem
+          onClick={() => navigate("/admin_dashboard/maintenance_requests")}
+          disablePadding
+          sx={{
+            backgroundColor:
+              selectedItem === "maintenance_requests"
+                ? lighten(theme.palette.primary.light, 0.6)
+                : "inherit",
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Maintenance"} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -159,7 +199,6 @@ export default function AdminDashboardLayout() {
   };
 
   const location = useLocation();
-
 
   React.useEffect(() => {
     console.log("subRoute", location.pathname);
