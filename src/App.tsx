@@ -146,9 +146,11 @@ function App(): JSX.Element {
               <Route
                 path="/book_valuation_registration"
                 element={
-                  <SecondaryLayout>
-                    <BookValuationRegistration />
-                  </SecondaryLayout>
+                  <PrivateWrapper>
+                    <SecondaryLayout>
+                      <BookValuationRegistration />
+                    </SecondaryLayout>
+                  </PrivateWrapper>
                 }
               />
 
@@ -156,7 +158,9 @@ function App(): JSX.Element {
                 path="/book_valuation_registration_confirmation"
                 element={
                   <SecondaryLayout>
-                    <BookValuationRegistrationConfirmation />
+                    <PrivateWrapper>
+                      <BookValuationRegistrationConfirmation />
+                    </PrivateWrapper>
                   </SecondaryLayout>
                 }
               />
@@ -166,7 +170,9 @@ function App(): JSX.Element {
                 element={
                   <MainLayout>
                     <UnContained>
-                      <FindProperties />
+                      <PrivateWrapper>
+                        <FindProperties />
+                      </PrivateWrapper>
                     </UnContained>
                   </MainLayout>
                 }
@@ -177,7 +183,9 @@ function App(): JSX.Element {
                 element={
                   <MainLayout>
                     <UnContained>
-                      <PropertyDetails />
+                      <PrivateWrapper>
+                        <PropertyDetails />
+                      </PrivateWrapper>
                     </UnContained>
                   </MainLayout>
                 }
@@ -187,7 +195,9 @@ function App(): JSX.Element {
                 element={
                   <MainLayout>
                     <UnContained>
-                      <FreeLetsHub />
+                      <PrivateWrapper>
+                        <FreeLetsHub />
+                      </PrivateWrapper>
                     </UnContained>
                   </MainLayout>
                 }
@@ -196,7 +206,9 @@ function App(): JSX.Element {
                 path="/admin_dashboard"
                 element={
                   <>
-                    <AdminDashboardLayout />
+                    <PrivateWrapper>
+                      <AdminDashboardLayout />
+                    </PrivateWrapper>
                   </>
                 }
               >
@@ -212,7 +224,11 @@ function App(): JSX.Element {
                 <Route path="add_properties" element={<AddProperties />} />
                 <Route
                   path="edit_properties/:property_id"
-                  element={<EditProperty />}
+                  element={
+                    <PrivateWrapper>
+                      <EditProperty />
+                    </PrivateWrapper>
+                  }
                 />
               </Route>
             </Routes>

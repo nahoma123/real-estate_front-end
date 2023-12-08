@@ -33,7 +33,7 @@ const LoginForm: React.FC = () => {
       if (responseData?.data?.user?.role === "ADMIN_ROLE"){
         navigate("/admin_dashboard/valuations", {replace: true})
       }else{
-        navigate("/landlord_tenant", {replace: true})
+        navigate("/landlord_tenant/dashboard", {replace: true})
       }
     } catch (err: any) {
       console.log(err)

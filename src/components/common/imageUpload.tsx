@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { DropzoneArea } from "material-ui-dropzone";
+import React, { useEffect, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 import { uploadImages } from "services/apiService";
 
 interface ImageUploadProps {
@@ -36,15 +36,28 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   filesLimit,
 }) => {
   useEffect(() => {
-    console.log("initialImageLinks",initialImageLinks);
+    console.log("initialImageLinks", initialImageLinks);
   }, []);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    onImageUpload(acceptedFiles);
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {
+      "image/png": [".png"],
+      "image/jpg": [".jpg"],
+      "image/jpeg": [".jpeg"],
+    },
+    maxFiles: filesLimit,
+  });
+
   return (
-    <DropzoneArea
-      filesLimit={filesLimit}
-      onChange={onImageUpload}
-      acceptedFiles={["image/*"]}
-      initialFiles={initialImageLinks}
-    />
+    <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      <p>Drag 'n' drop some files here, or click to select files</p>
+    </div>
   );
 };
 

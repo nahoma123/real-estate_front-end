@@ -8,7 +8,7 @@ import {
   HeaderMenu,
   StyledDropdown,
 } from "../header_menu/header_menu";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AdminPanelSettings, Person3Outlined } from "@mui/icons-material";
 const StyledAppBar = styled(AppBar)({
   backgroundColor: "#fff",
@@ -56,65 +56,83 @@ const Header: React.FC<HeaderProps> = ({
 
   let headerSide: JSX.Element | null = null; // Define the type of headerSide
 
-  if (headerType === "Type1") {
-    headerSide = (
-      <>
-        {user == null ? (
-          <StyledButton2
-            endIcon={<LoginIcon fontSize="small" />}
-            onClick={() => navigate("/user_account")}
-          >
-            Sign In/ Register
-          </StyledButton2>
-        ) : (
-          <StyledButton2
-            endIcon={<Person3Outlined fontSize="medium" />}
-            onClick={() => navigate("/user_account")}
-          >
-            {user?.last_name}
-          </StyledButton2>
-        )}
-      </>
+  const SignInButton = () => (
+    <StyledButton2
+      endIcon={<LoginIcon fontSize="small" />}
+      onClick={() => navigate("/user_account")}
+    >
+      Sign In/ Register
+    </StyledButton2>
+  );
+
+  const UserButton = (endIcon, navigatePath, buttonText) => (
+    <StyledButton2 endIcon={endIcon} onClick={() => navigate(navigatePath)}>
+      {buttonText}
+    </StyledButton2>
+  );
+
+  if (user?.role === "ADMIN_ROLE") {
+    headerSide = UserButton(
+      <AdminPanelSettings fontSize="small" />,
+      "/admin_dashboard/valuations",
+      "Admin Console"
     );
-  } else if (user?.role === "ADMIN_ROLE") {
-    headerSide = (
-      <>
-        <StyledButton2
-          endIcon={<AdminPanelSettings fontSize="small" />}
-          onClick={() => navigate("/admin_dashboard/valuations")}
-        >
-          Admin Console
-        </StyledButton2>
-      </>
-    );
-  } else if (headerType === "Type2") {
-    headerSide = (
-      <>
-        {user == null ? (
-          <StyledButton2
-            endIcon={<LoginIcon fontSize="small" />}
-            onClick={() => navigate("/user_account")}
-          >
-            Sign In/ Register
-          </StyledButton2>
-        ) : (
-          <StyledButton2
-            startIcon={<Person3Outlined fontSize="medium" />}
-            onClick={() => navigate("/landlord_tenant/dashboard")}
-          >
-            FreeLets Hub
-          </StyledButton2>
-        )}
-      </>
-    );
+  } else {
+    switch (headerType) {
+      case "Type1":
+        headerSide =
+          user == null
+            ? SignInButton()
+            : UserButton(
+                <Person3Outlined fontSize="medium" />,
+                "/user_account",
+                user?.last_name
+              );
+        break;
+      case "Type2":
+        headerSide =
+          user == null
+            ? SignInButton()
+            : UserButton(
+                <Person3Outlined fontSize="medium" />,
+                "/landlord_tenant/dashboard",
+                "FreeLets Hub"
+              );
+        break;
+      default:
+        break;
+    }
   }
+
+  const location = useLocation();
+  if (
+    location.pathname.startsWith("/admin_dashboard/") ||
+    location.pathname.startsWith("/landlord_tenant/")
+  ) {
+    headerSide =
+      user == null
+        ? SignInButton()
+        : UserButton(
+            <Person3Outlined fontSize="medium" />,
+            "/user_account",
+            user?.last_name
+          );
+  }
+  
 
   if (!headerLeft) {
     headerLeft = <LogoImg />;
   } else {
     headerLeft = (
       <>
-        <Grid item md={6} container direction="row" justifyContent={"center"} alignContent={"center"}>
+        <Grid
+          item
+          md={6}
+          container
+          direction="row"
+          justifyContent={"center"}
+          alignContent={"center"}
+        >
           {headerLeft}
         </Grid>
         <Grid

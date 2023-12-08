@@ -9,6 +9,7 @@ import {
   Button,
   Card,
   CardContent,
+  Divider,
 } from "@mui/material";
 import {
   handleFormSubmit,
@@ -20,6 +21,7 @@ import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
 import SavingsCalculator from "components/presentational/saving/saving";
 import { useParams } from "react-router-dom";
 import { ImageCarousel } from "components/common/carousel";
+import { MapView } from "components/common/map";
 
 const BlackBackground = styled("div")({
   backgroundColor: "#333",
@@ -72,9 +74,22 @@ const PropertyDetails: React.FC = () => {
     <Box marginTop="100px">
       <Container>
         <Box marginTop={3} marginBottom={4}>
+          <Box marginBottom={2}>
+            <Typography fontSize={"2em"}>Property Details</Typography>
+          </Box>
+          <Box marginBottom={1}>
+            <Divider />
+          </Box>
+
           <Grid container>
             <Grid item md={3} sm={3}>
-              <Box height={"100%"} display="flex" flexDirection={"column"} justifyContent="center">
+              <Box
+                padding={2}
+                height={"100%"}
+                display="flex"
+                flexDirection={"column"}
+                justifyContent="center"
+              >
                 <Box
                   display="flex"
                   justifyContent="space-between"
@@ -99,7 +114,9 @@ const PropertyDetails: React.FC = () => {
                       pcm
                     </Typography>
                   </Box>
-                  <Box>
+                </Box>
+                <Box display={"flex"} padding={1}>
+                  <Box flexGrow={1}>
                     <Typography
                       variant="body1"
                       component="div"
@@ -114,6 +131,8 @@ const PropertyDetails: React.FC = () => {
                     >
                       Beds: {property?.bed_number}
                     </Typography>
+                  </Box>
+                  <Box flexGrow={1}>
                     <Typography
                       variant="body1"
                       component="div"
@@ -133,6 +152,11 @@ const PropertyDetails: React.FC = () => {
                     Property Type: {property?.property_type}
                   </Typography>
                 </Box>
+                <Box marginTop={4}>
+                  <Typography variant="body1" component="div">
+                    Property Details: {property?.property_details}
+                  </Typography>
+                </Box>
               </Box>
             </Grid>
             <Grid item md={9} sm={9}>
@@ -141,7 +165,9 @@ const PropertyDetails: React.FC = () => {
           </Grid>
         </Box>
       </Container>
-      <Container></Container>
+      <Container>
+        <MapView />
+      </Container>
     </Box>
   );
 };
