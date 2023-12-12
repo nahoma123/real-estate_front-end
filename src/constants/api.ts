@@ -1,4 +1,4 @@
-const BASE_URL: string = "http://localhost:8001/";
+const BASE_URL: string = "http://77.68.21.74/real_estate_backend";
 
 const REGISTER_URL: string = AddBase("users/register");
 const VALUATIONS: string = AddBase("/valuations");

@@ -166,7 +166,18 @@ const PropertyDetails: React.FC = () => {
         </Box>
       </Container>
       <Container>
-        <MapView />
+        <Box marginBottom={2}>
+          <Typography fontSize={"2em"}>Property Location</Typography>
+        </Box>
+        <Box marginBottom={1}>
+          <Divider />
+        </Box>
+      </Container>
+
+      <Container>
+        <Box m={4}>
+          <MapView address={property?.address} />
+        </Box>
       </Container>
     </Box>
   );
