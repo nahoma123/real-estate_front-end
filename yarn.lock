@@ -7646,6 +7646,11 @@ popmotion@9.3.6:
     style-value-types "4.1.4"
     tslib "^2.1.0"
 
+postcode-validator@^3.8.20:
+  version "3.8.20"
+  resolved "https://registry.yarnpkg.com/postcode-validator/-/postcode-validator-3.8.20.tgz#5844db4df83ce71c058a8e1f009b12fae0cadec8"
+  integrity sha512-cvxPfYdtfzTPtQuqnsGQe8rObb9CcCJou93OhSY038yVDdL5aU2QjDQqgNtD5sFpaic+BYrEHAGEEA+WB/nHXg==
+
 postcss-attribute-case-insensitive@^5.0.2:
   version "5.0.2"
   resolved "https://registry.npmjs.org/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-5.0.2.tgz"

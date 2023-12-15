@@ -11,9 +11,23 @@ import {
   Button,
 } from "@mui/material";
 import axios from "axios";
-import { Search } from "@mui/icons-material";
+import {
+  NextPlan,
+  NextPlanTwoTone,
+  Search,
+  SkipNextOutlined,
+  Toc,
+} from "@mui/icons-material";
 import { GetAddressUrl } from "constants/api";
 import { ObjectType } from "typescript";
+import {
+  postcodeValidator,
+  postcodeValidatorExistsForCountry,
+} from "postcode-validator";
+
+import { useSnackbar } from "notistack";
+
+// Full address string
 
 type BookValuationProps = {};
 
@@ -25,9 +39,9 @@ function BookValuation({}: BookValuationProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [postcode, setPostcode] = useState("");
-  const [addresses, setAddresses] = useState<Address[]>([]);
-  const [selectedAddress, setSelectedAddress] = useState("");
+  const [address, setAddress] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -39,35 +53,57 @@ function BookValuation({}: BookValuationProps) {
     setPostcode(event.target.value);
   };
 
-  const handleFindAddress = async () => {
-    try {
-      const response = await axios.get(GetAddressUrl(postcode));
-      const result = response?.data?.suggestions;
-      console.log("Result-", result);
-      if (result && result.length > 0) {
-        setAddresses(result); // Update addresses with the list of address objects
-        setIsModalOpen(true);
-      } else {
-        setIsModalOpen(false);
-        setAddresses([]); // Clear the addresses if there are no results
-      }
-    } catch (error) {
-      console.error("Error fetching addresses:", error);
-      setIsModalOpen(false);
-    }
+  const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAddress(event.target.value);
   };
+
+  // const handleFindAddress = async () => {
+  //   try {
+  //     const response = await axios.get(GetAddressUrl(postcode));
+  //     const result = response?.data?.suggestions;
+  //     console.log("Result-", result);
+  //     if (result && result.length > 0) {
+  //       setAddresses(result); // Update addresses with the list of address objects
+  //       setIsModalOpen(true);
+  //     } else {
+  //       setIsModalOpen(false);
+  //       setAddresses([]); // Clear the addresses if there are no results
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching addresses:", error);
+  //     setIsModalOpen(false);
+  //   }
+  // };
 
   const handleAddressClick = (address: string) => {
-    setSelectedAddress(address);
-    setIsModalOpen(false);
-    sessionStorage.setItem('address', address)
-    navigate(`/book_valuation_registration?value=${postcode}`);
-  };
+    if (!postcode || !address) {
+      enqueueSnackbar("fill both postcode and address to proceed", {
+        variant: "error",
+      });
+      // Show an error message or perform any necessary action
+      return;
+    }
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setSelectedAddress("");
-    setAddresses([]);
+    // Validate the postcode format
+    if (!postcodeValidator(postcode, "UK")) {
+      console.log(postcode);
+      // Show an error message or perform any necessary action
+      enqueueSnackbar("postcode should be a valid postcode", {
+        variant: "error",
+      });
+      return;
+    }
+
+    if (!(address.split(",").length >= 2)) {
+      console.log("Address", address.split(",").length);
+      enqueueSnackbar("please enter the full address", {
+        variant: "error",
+      });
+      return;
+    }
+
+    sessionStorage.setItem("address", address);
+    navigate(`/book_valuation_registration?value=${postcode}`);
   };
 
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"));
@@ -106,22 +142,32 @@ function BookValuation({}: BookValuationProps) {
               fullWidth
             />
           </Box>
+          <Box margin={3}>
+            <TextField
+              label="Enter full Address"
+              value={address}
+              onChange={handleAddressChange}
+              variant="outlined"
+              fullWidth
+            />
+          </Box>
+
           <Grid item xs={12}>
             <Box margin={3}>
               <Button
+                endIcon={<Toc />}
                 style={{ borderRadius: "0px", width: "100%" }}
                 variant="contained"
-                startIcon={<Search />}
-                onClick={handleFindAddress}
+                onClick={() => handleAddressClick(address)}
               >
-                Find Address
+                Next
               </Button>
             </Box>
           </Grid>
         </Grid>
         <Grid md={3} xs={0}></Grid>
       </Grid>
-
+      {/* 
       <Modal
         open={isModalOpen}
         onClose={handleModalClose}
@@ -144,7 +190,7 @@ function BookValuation({}: BookValuationProps) {
           <Typography variant="h6" id="modal-title" gutterBottom>
             Select Address
           </Typography>
-          <TextField
+          {/* <TextField
             label="Select address"
             select
             variant="outlined"
@@ -164,9 +210,9 @@ function BookValuation({}: BookValuationProps) {
                 </MenuItem>
               );
             })}
-          </TextField>
-        </Box>
-      </Modal>
+          </TextField> */}
+      {/* </Box> */}
+      {/* </Modal> */}
     </Box>
   );
 }
