@@ -12,6 +12,7 @@ export async function sendFilterRequest(
 }
 
 export interface PropertyData {
+  inspected: boolean;
   id: number;
   property_id: string;
   status: string;
