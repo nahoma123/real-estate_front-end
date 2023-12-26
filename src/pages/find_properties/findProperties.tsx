@@ -52,8 +52,8 @@ function PropertiesHeaderSection({ filterRequest, count }: any) {
         paddingTop={1}
         paddingBottom={1}
       >
-        <Typography variant="h6">
-          Properties to rent in location: [{filterRequest?.address}]
+        <Typography variant="h6" sx={{ fontSize: { xs: "0.75rem", sm: "0.75rem", md: "1.5rem", lg: "1.5rem" } }}>
+          Properties to rent in location: {filterRequest?.address}
         </Typography>
       </Box>
       <Box
@@ -63,8 +63,8 @@ function PropertiesHeaderSection({ filterRequest, count }: any) {
         paddingTop={1}
         paddingBottom={1}
       >
-        <Typography variant="body1" display={"block"}>
-          Total Properties Found in location: [{count}]
+        <Typography variant="body1" display={"block"} sx={{ fontSize: { xs: "0.75rem", sm: "0.75rem", md: "1.5rem", lg: "1.5rem" } }}>
+          Total Properties Found in location: {count}
         </Typography>
       </Box>
     </BlackBackground>
@@ -187,7 +187,7 @@ const FindProperties: React.FC = () => {
   }
 
   return (
-    <Box marginTop="100px">
+    <Box>
       <Container>
         <PropertyFilterSection onSubmit={handleFilter} />
       </Container>
@@ -229,12 +229,12 @@ const FindProperties: React.FC = () => {
             direction="column"
             justifyContent="center"
           >
-            <Typography variant="h4" align="center" textAlign={"left"}>
+            <Typography variant="h4" align="center" textAlign={"left"} sx={{ fontSize: { xs: "1rem", sm: "1rem", md: "2rem", lg: "2rem" } }}>
               See how much you could save per year when you let your home for
               free
             </Typography>
           </Grid>
-          <Grid item container md={6} paddingLeft={4}>
+          <Grid item container md={6}>
             <SavingsCalculatorSection />
           </Grid>
         </Grid>

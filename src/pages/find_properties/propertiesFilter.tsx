@@ -32,9 +32,9 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
   ];
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)}>
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="mt-64 p-8 lg:mt-4">
       <Grid container spacing={2}>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <Controller
             name="address"
             control={control}
@@ -53,7 +53,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
             )}
           />
         </Grid>
-        <Grid item xs={6} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <Controller
             name="minAmount"
             control={control}
@@ -62,7 +62,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
             )}
           />
         </Grid>
-        <Grid item xs={6} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <Controller
             name="maxAmount"
             control={control}
@@ -71,7 +71,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
             )}
           />
         </Grid>
-        <Grid item xs={6} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <Controller
             name="minBeds"
             control={control}
@@ -86,7 +86,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
             )}
           />
         </Grid>
-        <Grid item xs={6} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <Controller
             name="maxBeds"
             control={control}
@@ -95,7 +95,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
             )}
           />
         </Grid>
-        <Grid item xs={6} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <FormControl fullWidth>
             <Controller
               control={control}
@@ -124,7 +124,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
             />
           </FormControl>
         </Grid>
-        <Grid item xs={6} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <FormControl fullWidth>
             <Controller
               name="mustHaves"
@@ -153,7 +153,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
             />
           </FormControl>
         </Grid>
-        <Grid item xs={6} md={2}>
+        <Grid item xs={12} sm={6} md={2}>
           <FormControl fullWidth>
             <InputLabel>Furnished</InputLabel>
             <Controller
@@ -172,7 +172,7 @@ const PropertyFilter: React.FC<PropertyFilterProps> = ({ onSubmit }) => {
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={12}
           md={3}
           display="flex"
           padding={1}
