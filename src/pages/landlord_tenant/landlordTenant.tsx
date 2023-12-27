@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { Header } from "../../components/presentational/header/Header";
 import HeroImg from "../../assets/images/hero.jpg"
-import { House, Person2, Person2TwoTone, Sell } from "@mui/icons-material";
+import { House, Person2TwoTone } from "@mui/icons-material";
 import { HubOptions } from "./hubOptions";
 import { LandLordBody } from "./landlordBody";
 import { Route, Routes, useParams } from "react-router-dom";
@@ -63,7 +63,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 }) => {
   return (
     <Grid container>
-      <Grid item xs={10}>
+      <Grid item xs={12} sm={10} md={10} lg={10}>
         <CustomHeaderImageContainer>
           <CustomBox>
             <Grid container>
@@ -82,24 +82,28 @@ const Dashboard: React.FC<DashboardProps> = ({
                 >
                   <ToggleButton value="selling" aria-label="selling">
                     <House />
-                    <Typography marginLeft={1}>LandLord</Typography>
+                    <Typography sx={{ fontSize: { xs: 14, sm: 16, md: 18, lg: 20 } }} marginLeft={1}>
+                      LandLord
+                    </Typography>
                   </ToggleButton>
                   <ToggleButton value="buying" aria-label="buying">
                     <Person2TwoTone />
-                    <Typography marginLeft={1}>Tenant</Typography>
+                    <Typography sx={{ fontSize: { xs: 14, sm: 16, md: 18, lg: 20 } }} marginLeft={1}>
+                      Tenant
+                    </Typography>
                   </ToggleButton>
-                </ToggleButtonGroup>
+                  </ToggleButtonGroup>
+                </Grid>
+                <Grid md={6}>{/* <LandLordBody /> */}</Grid>
               </Grid>
-              <Grid md={6}>{/* <LandLordBody /> */}</Grid>
-            </Grid>
-          </CustomBox>
-        </CustomHeaderImageContainer>
-        <LandLordBody />
+            </CustomBox>
+          </CustomHeaderImageContainer>
+          <LandLordBody />
+        </Grid>
+        <Grid xs={12} sm={2} md={2} lg={2}></Grid>
       </Grid>
-      <Grid xs={2}></Grid>
-    </Grid>
-  );
-};
+    );
+  };
 
 const FreeLetsHub: React.FC = () => {
   const [selectedButton, setSelectedButton] = useState("selling");
@@ -127,7 +131,8 @@ const FreeLetsHub: React.FC = () => {
   }
 
   return (
-    <Box>
+    <div className="mt-56 lg:mt-0">
+      <Box>
       <Box display={"flex"} alignContent={"center"} justifyContent={"center"}>
         <Header headerType="Type1" />
       </Box>
@@ -135,19 +140,24 @@ const FreeLetsHub: React.FC = () => {
         <Grid container>
           <Grid
             item
+            xs={12}
+            sm={3}
             md={3}
+            lg={3}
             display={"flex"}
             justifyContent={"center"}
             height={"auto"}
           >
             <HubOptions />
           </Grid>
-          <Grid item md={9}>
+          <Grid item xs={12} sm={9} md={9} lg={9}>
             {component}
           </Grid>
         </Grid>
       </Container>
     </Box>
+    </div>
+    
   );
 };
 
