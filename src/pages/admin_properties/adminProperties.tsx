@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 const AdminProperties: React.FC = () => {
   let navigate = useNavigate();
   return (
-    <>
-      <Grid container m={3} width={"100%"}>
+    <div className="mt-36 lg:mt-0">
+      <Grid container width={"100%"}>
+        <div className="flex flex-wrap justify-center flex-col md:flex-row items-center w-full">
         <Grid item md={10}>
           <Typography fontSize={"1.9em"}>Properties</Typography>
         </Grid>
@@ -24,11 +25,18 @@ const AdminProperties: React.FC = () => {
             Add Properties
           </Button>
         </Grid>
+        </div>
       </Grid>
-      <Box m={3}>
+      <Box sx={{
+          marginTop:'10px',
+          
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
         <PropertiesTable />
       </Box>
-    </>
+    </div>
   );
 };
 

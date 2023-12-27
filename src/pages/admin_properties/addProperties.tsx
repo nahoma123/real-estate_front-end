@@ -97,14 +97,15 @@ export default function AddProperties() {
   // submission end
 
   return (
-    <Box m={3}>
+    <div className="mt-48 lg:mt-0">
+      <Box m={3}>
       <FormProvider {...methods}>
         <Card>
           <CardContent>
             <form onSubmit={onSubmit}>
               <Grid container>
-                <Grid md={8}>
-                  <Typography variant="h4" gutterBottom>
+                <Grid md={8} >
+                  <Typography variant="h4" gutterBottom >
                     Add Property
                   </Typography>
                 </Grid>
@@ -114,6 +115,7 @@ export default function AddProperties() {
                   justifyContent={"center"}
                   alignContent={"center"}
                   padding={theme.spacing(2)}
+                  style={{ width: '100%' }}
                 >
                   <Button
                     type="submit"
@@ -154,7 +156,7 @@ export default function AddProperties() {
                     helperText={errors.amount && "Amount is required"}
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     label="Number of Bath rooms"
                     type="number"
@@ -164,7 +166,7 @@ export default function AddProperties() {
                     helperText={errors.bath_number && "Number of Bath rooms"}
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     label="Number of Beds"
                     type="number"
@@ -176,7 +178,7 @@ export default function AddProperties() {
                     }
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     label="EPC"
                     {...register("epc", { required: true })}
@@ -185,7 +187,7 @@ export default function AddProperties() {
                     helperText={errors.epc && "EPC is required"}
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <Controller
                     name="features"
                     control={control}
@@ -215,7 +217,7 @@ export default function AddProperties() {
                   />
                 </Grid>
 
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <Controller
                     name="furnished"
                     control={control}
@@ -244,14 +246,14 @@ export default function AddProperties() {
                   />
                 </Grid>
 
-                <Grid item md={6}>
+                <Grid item xs={12} md={6} >
                   <DatePickerWithValidation
                     name={"next_inspection_date"}
                     rules={{ required: true }}
                     label={"Next Inspection Date"}
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     label="Property Details"
                     {...register("property_details", { required: true })}
@@ -262,7 +264,7 @@ export default function AddProperties() {
                     }
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <Controller
                     name="property_type"
                     control={control}
@@ -292,7 +294,7 @@ export default function AddProperties() {
                   />
                 </Grid>
 
-                <Grid item md={6}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     label="Reception Number"
                     {...register("reception_number", { required: true })}
@@ -336,5 +338,7 @@ export default function AddProperties() {
         </Card>
       </FormProvider>
     </Box>
+    </div>
+    
   );
 }

@@ -158,7 +158,8 @@ export default function EditProperty() {
   // submission end
 
   return (
-    <Box m={3}>
+    <div className="mt-36 lg:mt-0">
+      <Box m={3}>
       <FormProvider {...methods}>
         <Card>
           <CardContent>
@@ -179,6 +180,7 @@ export default function EditProperty() {
                     justifyContent={"center"}
                     alignContent={"center"}
                     padding={theme.spacing(2)}
+                    style={{ width: '100%' }}
                   >
                     <Button
                       type="submit"
@@ -221,7 +223,7 @@ export default function EditProperty() {
                       helperText={errors.amount && "Amount is required"}
                     />
                   </Grid>
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <TextField
                       label="Number of Bath rooms"
                       type="number"
@@ -232,7 +234,7 @@ export default function EditProperty() {
                       helperText={errors.bath_number && "Number of Bath rooms"}
                     />
                   </Grid>
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <TextField
                       label="Number of Beds"
                       InputLabelProps={{ shrink: true }}
@@ -245,7 +247,7 @@ export default function EditProperty() {
                       }
                     />
                   </Grid>
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <TextField
                       label="EPC"
                       InputLabelProps={{ shrink: true }}
@@ -255,7 +257,7 @@ export default function EditProperty() {
                       helperText={errors.epc && "EPC is required"}
                     />
                   </Grid>
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <Controller
                       name="features"
                       control={control}
@@ -286,7 +288,7 @@ export default function EditProperty() {
                     />
                   </Grid>
 
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <Controller
                       name="furnished"
                       control={control}
@@ -317,14 +319,14 @@ export default function EditProperty() {
                     />
                   </Grid>
 
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <DatePickerWithValidation
                       name={"next_inspection_date"}
                       rules={{ required: true }}
                       label={"Next Inspection Date"}
                     />
                   </Grid>
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <TextField
                       label="Property Details"
                       InputLabelProps={{ shrink: true }}
@@ -337,7 +339,7 @@ export default function EditProperty() {
                       }
                     />
                   </Grid>
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <Controller
                       name="property_type"
                       control={control}
@@ -368,7 +370,7 @@ export default function EditProperty() {
                     />
                   </Grid>
 
-                  <Grid item md={6}>
+                  <Grid item xs={12} md={6}>
                     <TextField
                       label="Reception Number"
                       InputLabelProps={{ shrink: true }}
@@ -381,7 +383,7 @@ export default function EditProperty() {
                       }
                     />
                   </Grid>
-                  <Grid item md={6} display={"flex"} justifyContent={"center"}>
+                  <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"}>
                     <FormGroup>
                       <FormControlLabel
                         control={
@@ -418,5 +420,6 @@ export default function EditProperty() {
         <DevTool control={control} />
       </FormProvider>
     </Box>
+    </div>
   );
 }

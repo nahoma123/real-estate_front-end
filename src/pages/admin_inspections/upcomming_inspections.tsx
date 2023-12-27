@@ -7,16 +7,21 @@ import UpcomingInspectionsTable from "./inspections_table";
 const UpcomingInspections: React.FC = () => {
   let navigate = useNavigate();
   return (
-    <>
-      <Grid container m={3} width={"100%"}>
-        <Grid item md={10}>
+    <div  className="mt-64 lg:mt-0">
+      <Grid container>
+        <Grid>
           <Typography fontSize={"1.9em"}>Upcoming Inspections</Typography>
         </Grid>
       </Grid>
-      <Box m={3}>
+      <Box sx={{
+          marginTop:'10px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
         <UpcomingInspectionsTable />
       </Box>
-    </>
+    </div>
   );
 };
 

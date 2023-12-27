@@ -124,7 +124,7 @@ const Header: React.FC<HeaderProps> = ({
     headerLeft = <LogoImg />;
   } else {
     headerLeft = (
-      <>
+      <div className="flex mt-2">
         <Grid
           item
           md={6}
@@ -144,7 +144,7 @@ const Header: React.FC<HeaderProps> = ({
         >
           <LogoImg />
         </Grid>
-      </>
+      </div>
     );
   }
 

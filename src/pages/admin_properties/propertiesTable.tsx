@@ -144,8 +144,8 @@ export default function PropertiesTable() {
 
   return (
     <Box minHeight={"500px"}>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <TableContainer component={Paper} style={{ maxWidth: '90vw', overflowX: 'auto' }}>
+        <Table aria-label="customized table">
           <TableHead
             sx={{
               backgroundColor: theme.palette.primary.main,
