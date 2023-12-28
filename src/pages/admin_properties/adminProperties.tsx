@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const AdminProperties: React.FC = () => {
   let navigate = useNavigate();
   return (
-    <div className="mt-56 lg:mt-0">
+    <div className="mt-56 lg:mt-2">
       <Grid container width={"100%"}>
         <div className="flex flex-wrap justify-center flex-col md:flex-row items-center w-full">
         <Grid item md={10}>

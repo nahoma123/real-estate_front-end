@@ -75,11 +75,13 @@ const SavingsCalculator = () => {
         </Grid>
       </Box>
       <Box className="mt-2">
-        <Grid container alignItems="center" justifyContent="center">
+        <Grid container display="flex" flexDirection="row" flexWrap="wrap" alignItems="center" justifyContent="center">
           <Grid item xs={12} sm={9} md={9}>
             <Typography
-              variant="h3"
-              className={`font-bold text-${primaryColor}`}
+              sx={{ fontSize: { xs: '2rem', sm: '2rem', md: '3.5rem', lg: '3.5rem' } }}
+              className={`font-bold`}
+              color={`${primaryColor}`}
+              style={{}}
             >
               £{calculateSavings()}
             </Typography>
@@ -89,7 +91,7 @@ const SavingsCalculator = () => {
             xs={12}
             sm={3}
             md={3}
-            style={{ maxWidth: "100%", height: "auto" }}
+            style={{ height: "auto" }}
           >
             <ImgComponent imageUrl={Wallet} alt="wallet img" />
           </Grid>

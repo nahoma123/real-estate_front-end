@@ -67,53 +67,59 @@ const LandingPage: React.FC = () => {
                   </Grid>
                 </Box>
               </Box>
-              <Container maxWidth="sm" className="my-2">
-              <form
-                onSubmit={handleSubmit}
-                style={{
-                  border: "1px solid #ccc",
-                  padding: "10px",
-                }}
-              >
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={8}>
-                    <TextField
-                      error={isInvalid}
-                      helperText={isInvalid && "Please enter at least 3 characters."}
-                      label="What's your postcode?"
-                      value={valuationValue}
-                      onChange={(event) => setValuationValue(event.target.value)}
-                      variant="standard"
-                      fullWidth
-                      InputProps={{
-                        disableUnderline: true,
-                        style: {
-                          textAlign: "center",
-                          justifyItems: "center",
-                        },
-                      }}
-                      style={{
-                        height: "100%",
-                      }}
-                    />
+              <Box marginTop={8} marginBottom={2} sx={{ width:"100%", paddingRight: { md: "60px" }}}>
+                <form
+                  onSubmit={handleSubmit}
+                  style={{
+                    border: "1px solid #ccc",
+                    padding: "10px",
+                  }}
+                >
+                  <Grid container>
+                    <Grid item xs={12} sm={8} md={8} lg={8} paddingLeft={4}>
+                      <TextField
+                        error={isInvalid}
+                        helperText={isInvalid && "Please enter at least 3 characters."}
+                        label="What's your postcode?"
+                        value={valuationValue}
+                        onChange={(event) => setValuationValue(event.target.value)}
+                        variant="standard"
+                        InputProps={{
+                          disableUnderline: true,
+                          style: {
+                            textAlign: "center",
+                            justifyItems: "center",
+                          },
+                        }}
+                        fullWidth
+                        style={{
+                          height: "100%",
+                          right: 0,
+                          width: "100%",
+                          border: "0px",
+                          padding: "0px",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={4} md={4} lg={4}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        style={{
+                          height: "100%",
+                          borderRadius: "0px",
+                          width: "100%",
+                          border: "2px solid #948c1e",
+                          padding: "0px",
+                        }}
+                      >
+                        Submit
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      style={{
-                        borderRadius: "0px",
-                        border: "2px solid #948c1e",
-                      }}
-                    >
-                      Submit
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-            </Container>
+                </form>
+              </Box>
             </Grid>
             <Grid md={7}>
               <Box display={"flex"}>
@@ -141,18 +147,18 @@ const LandingPage: React.FC = () => {
             direction="column"
             justifyContent="center"
           >
-             <img
+             {/* <img
             style={{ height: "25%", margin: "10px" }}
             alt="testing1"
             src="https://strike.co.uk/static/ebb219314ad10098c1b9ade11391feb1/5d2f5/selling.webp"
-          /> 
+          />  */}
 
-            <Typography variant="h4" align="center" textAlign={"left"}>
+            <Typography variant="h4" align="center" textAlign={"left"} sx={{paddingRight: { md: "60px" }}}>
               See how much you could save per year when you let your home for
               free
             </Typography>
           </Grid>
-          <Grid item container md={6} paddingLeft={0}>
+          <Grid item container md={6} paddingLeft={0} >
             <SavingsCalculator />
           </Grid>
         </Grid>

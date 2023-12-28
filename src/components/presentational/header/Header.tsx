@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Toolbar, Button, Grid, styled } from "@mui/material";
+import { AppBar, Toolbar, Button, Grid, styled, Typography } from "@mui/material";
 
 import LogoImg from "../logo/image";
 import LoginIcon from "@mui/icons-material/Login";
@@ -137,6 +137,7 @@ const Header: React.FC<HeaderProps> = ({
         </Grid>
         <Grid
           item
+          xs={4}
           md={6}
           display={"flex"}
           direction="row"
@@ -149,13 +150,13 @@ const Header: React.FC<HeaderProps> = ({
   }
 
   return (
-    <StyledAppBar position="fixed">
+    <StyledAppBar position="absolute" >
       <Toolbar>
         <Grid container component="div" display={"flex"} direction="row">
           <Grid container item md={2} sm={0}>
             {headerLeft}
           </Grid>
-          <StyledGrid container item direction="row" md={8} sm={8}>
+          <StyledGrid container item direction="row" lg={8} md={2} sm={0}>
             <Grid item container>
               <Grid
                 item
@@ -174,7 +175,11 @@ const Header: React.FC<HeaderProps> = ({
                 container
               >
                 <StyledDropdown>
-                  <StyledDropdownText>Why Us</StyledDropdownText>
+                  <StyledDropdownText>
+                    <Typography sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.1rem', lg: '1.1rem' }, fontWeight: '700' }}>
+                      Why Us
+                    </Typography>
+                  </StyledDropdownText>
                 </StyledDropdown>
               </Grid>
 
@@ -186,7 +191,11 @@ const Header: React.FC<HeaderProps> = ({
                 container
               >
                 <StyledDropdown onClick={() => navigate("/find_properties")}>
-                  <StyledDropdownText>Find a property</StyledDropdownText>
+                  <StyledDropdownText>
+                    <Typography sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.1rem', lg: '1.1rem' }, fontWeight: '700' }}>
+                      Find a property
+                    </Typography>
+                  </StyledDropdownText>
                 </StyledDropdown>
               </Grid>
             </Grid>

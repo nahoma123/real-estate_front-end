@@ -19,8 +19,9 @@ const Bar = styled(Box)(({ theme }) => ({
 
 const LogoContainer = styled(Box)(({ theme }) => ({
   display: "flex",
+  flexWrap: "wrap",
   alignItems: "center",
-  justifyContent: "center", // Center-align the logos
+  justifyContent: "space-between", // Center-align the logos
   flex: 1,
 }));
 
@@ -67,7 +68,7 @@ const BlockBar: React.FC = () => {
       <Grid container>
         <Grid md={1} xs={0} sm={0}></Grid>
         <Grid md={10} xs={12} sm={12} lg={10}>
-          <LogoContainer className="flex-wrap ">
+          <LogoContainer>
             <Logo src={Zoopla} alt="Zoopla" className="mb-2 sm:mb-0" />
             <Logo src={RightMove} alt="Rightmove" className="mb-2 sm:mb-0" />
             <Logo src={OpenRent} alt="OpenRent" className="mb-2 sm:mb-0" />
