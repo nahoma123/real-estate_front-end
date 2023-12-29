@@ -8,7 +8,7 @@ const AdminValuation: React.FC = () => {
   const theme = useTheme();
 
   return (
-    <div className="mt-56 lg:mt-2">
+    <div className="mt-36 lg:mt-2 mx-2 md:mx-12">
       <Box>
         <Typography fontSize={"1.9em"}>
           Valuations

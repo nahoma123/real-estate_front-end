@@ -205,7 +205,7 @@ export default function AdminDashboardLayout() {
   }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", flexDirection:"column" }}>
       <CssBaseline />
       <Header
         headerLeft={
@@ -234,10 +234,11 @@ export default function AdminDashboardLayout() {
         handleDrawerClose={handleDrawerClose}
       />
       <Main open={open}>
-        <DrawerHeader />
-        <Outlet />
-        <Footer />
+        
       </Main>
+      <DrawerHeader />
+      <Outlet />
+      <Footer />
     </Box>
   );
 }

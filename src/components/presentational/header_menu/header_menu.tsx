@@ -79,7 +79,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ label, redirectTo }) => {
         sx={{ color: "white" }}
       >
         <DropdownText variant="button" display="block">
-          <Typography sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.4rem', lg: '1.4rem' }, fontWeight: '700' }} > {label} </Typography>
+          <Typography sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.1rem', lg: '1.1rem' }, fontWeight: '700' }} > {label} </Typography>
           
         </DropdownText>
         <ArrowDropDownIcon sx={{ color: isOpen ? "#948c1e" : "black" }} />

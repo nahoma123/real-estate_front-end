@@ -133,8 +133,8 @@ export default function UpcomingInspectionsTable() {
   // ends effects
 
   return (
-    <Box minHeight={"500px"}>
-      <TableContainer component={Paper} style={{ maxWidth: '90vw', overflowX: 'auto' }}>
+    <Box minHeight={"500px"} width={"100%"} margin={"0px 0px"} display={"flex"} flexDirection={"column"} >
+      <TableContainer component={Paper} style={{ maxWidth: '100vw', overflowX: 'auto' }}>
         <Table aria-label="customized table">
           <TableHead
             sx={{

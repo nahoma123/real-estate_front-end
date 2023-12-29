@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Toolbar, Button, Grid, styled, Typography } from "@mui/material";
+import { AppBar, Toolbar, Button, Grid, styled, Typography, Box } from "@mui/material";
 
 import LogoImg from "../logo/image";
 import LoginIcon from "@mui/icons-material/Login";
@@ -28,6 +28,22 @@ const StyledButton2 = styled(Button)({
   paddingRight: "10px",
   "&:hover": {
     color: "#877e0f", // Set the background color on hover
+  },
+  
+  // Media queries for responsiveness
+  '@media (max-width: 600px)': {
+    height: "50%", // Adjust height for small screens
+    minWidth: "120px", // Adjust minWidth for small screens
+  },
+  
+  '@media (min-width: 601px) and (max-width: 1024px)': {
+    height: "50%", // Adjust height for small screens
+    minWidth: "120px", // Adjust minWidth for small screens
+  },
+  
+  '@media (min-width: 1025px)': {
+    height: "70%", // Adjust height for small screens
+    minWidth: "140px", // Adjust minWidth for small screens
   },
 });
 
@@ -124,28 +140,19 @@ const Header: React.FC<HeaderProps> = ({
     headerLeft = <LogoImg />;
   } else {
     headerLeft = (
-      <div className="flex mt-2 flex-col items-center justify-center w-full">
+      <Box display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"center"} sx={{width:"100%"}}>
         <Grid
           item
-          md={6}
+          marginLeft={5}
           container
-          direction="row"
-          justifyContent={"center"}
-          alignContent={"center"}
+          
         >
           {headerLeft}
         </Grid>
-        <Grid
-          item
-          xs={4}
-          md={6}
-          display={"flex"}
-          direction="row"
-          justifyContent={"center"}
-        >
-          <LogoImg />
-        </Grid>
-      </div>
+        <Grid item xs={10} sm={10} md={12} lg={16}>
+        <LogoImg />
+      </Grid>
+      </Box>
     );
   }
 
@@ -176,7 +183,7 @@ const Header: React.FC<HeaderProps> = ({
               >
                 <StyledDropdown>
                   <StyledDropdownText>
-                    <Typography sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.1rem', lg: '1.1rem' }, fontWeight: '700' }}>
+                    <Typography sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.0rem', lg: '1.0rem' }, fontWeight: '700' }}>
                       Why Us
                     </Typography>
                   </StyledDropdownText>

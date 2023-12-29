@@ -7,7 +7,7 @@ import UpcomingInspectionsTable from "./inspections_table";
 const UpcomingInspections: React.FC = () => {
   let navigate = useNavigate();
   return (
-    <div  className="mt-64 lg:mt-0">
+    <div  className="mt-36 lg:mt-2 mx-2 md:mx-12">
       <Grid container>
         <Grid>
           <Typography fontSize={"1.9em"}>Upcoming Inspections</Typography>

@@ -7,14 +7,13 @@ import { useNavigate } from "react-router-dom";
 const AdminProperties: React.FC = () => {
   let navigate = useNavigate();
   return (
-    <div className="mt-56 lg:mt-2">
-      <Grid container width={"100%"}>
-        <div className="flex flex-wrap justify-center flex-col md:flex-row items-center w-full">
+    <div className="mt-36 lg:mt-2 mx-2 md:mx-12">
+      <Grid container display={"flex"} flexWrap={"wrap"} justifyContent={"space-evenly"} alignItems={"center"}>
         <Grid item md={10}>
           <Typography fontSize={"1.9em"}>Properties</Typography>
         </Grid>
 
-        <Grid item md={2} display={"flex"} alignItems={"center"}>
+        <Grid item display={"flex"} alignItems={"center"}>
           <Button
             variant="contained"
             onClick={() => navigate("/admin_dashboard/add_properties")}
@@ -25,11 +24,9 @@ const AdminProperties: React.FC = () => {
             Add Properties
           </Button>
         </Grid>
-        </div>
       </Grid>
       <Box sx={{
           marginTop:'10px',
-          
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
