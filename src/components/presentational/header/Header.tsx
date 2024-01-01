@@ -163,11 +163,11 @@ const Header: React.FC<HeaderProps> = ({
           <Grid container item md={2} sm={0}>
             {headerLeft}
           </Grid>
-          <StyledGrid container item direction="row" lg={8} md={2} sm={0}>
-            <Grid item container>
+          <StyledGrid container item display="flex" alignItems="center" justifyContent="center" lg={8} md={8} sm={0}>
+            <Grid item container >
               <Grid
                 item
-                md={4}
+                md={5}
                 justifyContent="center"
                 alignItems="center"
                 container
@@ -176,7 +176,7 @@ const Header: React.FC<HeaderProps> = ({
               </Grid>
               <Grid
                 item
-                md={4}
+                md={2}
                 justifyContent="center"
                 alignItems="center"
                 container

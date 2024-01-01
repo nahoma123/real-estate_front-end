@@ -9,8 +9,8 @@ const AdminProperties: React.FC = () => {
   return (
     <div className="mt-36 lg:mt-2 mx-2 md:mx-12">
       <Grid container display={"flex"} flexWrap={"wrap"} justifyContent={"space-evenly"} alignItems={"center"}>
-        <Grid item md={10}>
-          <Typography fontSize={"1.9em"}>Properties</Typography>
+        <Grid item sm={8} md={8} lg={10}>
+          <Typography sx={{ fontSize: { xs: '1.5rem', sm: '1.5rem', md: '1.8rem', lg: '1.8rem' }}}>Properties</Typography>
         </Grid>
 
         <Grid item display={"flex"} alignItems={"center"}>

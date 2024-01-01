@@ -81,7 +81,7 @@ function VisitingSection() {
         paddingTop={4}
         paddingBottom={4}
       >
-        <Typography variant="h6">
+        <Typography sx={{ fontSize: { xs: '1.0rem', sm: '1.0rem', md: '1.6rem', lg: '1.6rem' }}}>
           Enter location and search for properties!
         </Typography>
       </Box>

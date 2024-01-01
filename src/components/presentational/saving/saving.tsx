@@ -75,8 +75,8 @@ const SavingsCalculator = () => {
         </Grid>
       </Box>
       <Box className="mt-2">
-        <Grid container display="flex" flexDirection="row" flexWrap="wrap" alignItems="center" justifyContent="center">
-          <Grid item xs={12} sm={9} md={9}>
+        <Grid container display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+          <Grid item xs={9} sm={9} md={9}>
             <Typography
               sx={{ fontSize: { xs: '2rem', sm: '2rem', md: '3.5rem', lg: '3.5rem' } }}
               className={`font-bold`}
@@ -88,7 +88,7 @@ const SavingsCalculator = () => {
           </Grid>
           <Grid
             item
-            xs={12}
+            xs={0}
             sm={3}
             md={3}
             style={{ height: "auto" }}
