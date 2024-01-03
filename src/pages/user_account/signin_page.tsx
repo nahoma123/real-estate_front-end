@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Grid, Box, Typography, Button } from "@mui/material";
 import { LoginForm } from "./signin_form";
+import { LoginFormAdmin } from "./signin_form_admin";
+import { LoginFormLandLord } from "./signin_form_landlord";
+import { LoginFormTenant } from "./signin_form_tenant";
 import { RegisterForm } from "./register";
 import { ForgotPasswordForm } from "./forgotPassword";
 import FlexibleImgComponent from "../../components/presentational/image/flexible_img";
@@ -8,14 +11,16 @@ import FlexibleImgComponent from "../../components/presentational/image/flexible
 import ProfileIcon from "../../assets/images/user_profile.png";
 import { getSignedUser, isSignedIn } from "../../utils/credentials";
 import { ChangePassword } from "./changePassword";
+import { useParams } from "react-router-dom";
+
 
 const AuthContainer = () => {
+  const { loginas } = useParams();
   const [activeForm, setActiveForm] = useState("login");
 
   const handleFormChange = (form: string) => {
     setActiveForm(form);
   };
-
   return (
     <Box>
       <Grid container justifyContent="center" alignItems="center" spacing={2}>
@@ -36,7 +41,7 @@ const AuthContainer = () => {
               gutterBottom
             >
               {!isSignedIn()
-                ? "Welcome to our FreeLets!"
+                ? `Welcome to our FreeLets!  ${loginas?.toUpperCase()}`
                 : `Hello ${getSignedUser()?.first_name} ${
                     getSignedUser()?.last_name
                   }`}
@@ -45,7 +50,9 @@ const AuthContainer = () => {
           {!isSignedIn() ? (
             <>
               <Box margin={3} marginTop={1}>
-                {activeForm === "login" && <LoginForm />}
+                {activeForm === "login" && loginas ==="landlord" && <LoginFormLandLord/>}
+                {activeForm === "login" && loginas ==="tenant" && <LoginFormTenant/>}
+                {activeForm === "login" && loginas ==="admin" && <LoginFormAdmin/>}
                 {activeForm === "register" && <RegisterForm />}
                 {activeForm === "forgotPassword" && <ForgotPasswordForm />}
               </Box>
@@ -72,7 +79,7 @@ const AuthContainer = () => {
                   </Button>
                 )}
                 <div className="flex flex-col justify-center items-center w-full">
-                  {activeForm !== "register" && (
+                  {activeForm !== "register" && loginas !== "admin" && (
                     <Button
                       variant="text"
                       sx={{

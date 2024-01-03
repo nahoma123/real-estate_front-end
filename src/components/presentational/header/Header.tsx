@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Toolbar, Button, Grid, styled, Typography, Box } from "@mui/material";
+import { AppBar, Toolbar, Button, Grid, styled, Typography, Box, Menu, MenuItem } from "@mui/material";
 
 import LogoImg from "../logo/image";
 import LoginIcon from "@mui/icons-material/Login";
@@ -71,15 +71,46 @@ const Header: React.FC<HeaderProps> = ({
   }, []);
 
   let headerSide: JSX.Element | null = null; // Define the type of headerSide
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleRoleSelect = (role: string) => {
+    setSelectedRole(role);
+    handleCloseMenu();
+  };
   const SignInButton = () => (
-    <StyledButton2
-      endIcon={<LoginIcon fontSize="small" />}
-      onClick={() => navigate("/user_account")}
-    >
-      Sign In/ Register
-    </StyledButton2>
+    <>
+      <StyledButton2
+        endIcon={<LoginIcon fontSize="small" />}
+        onClick={handleOpenMenu}
+      >
+        Sign In/ Register
+      </StyledButton2>
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleCloseMenu}
+      >
+        <MenuItem onClick={() => navigate("/user_account/landlord")}>
+          Landlord
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/user_account/tenant")}>
+          Tenant
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/user_account/admin")}>
+          Admin
+        </MenuItem>
+      </Menu>
+    </>
   );
+
 
   const UserButton = (endIcon:any, navigatePath:any, buttonText:any) => (
     <StyledButton2 endIcon={endIcon} onClick={() => navigate(navigatePath)}>

@@ -127,7 +127,7 @@ function App(): JSX.Element {
                 }
               />
               <Route
-                path="/user_account"
+                path="/user_account/:loginas"
                 element={
                   <SecondaryLayout
                     dynamicComponent={
