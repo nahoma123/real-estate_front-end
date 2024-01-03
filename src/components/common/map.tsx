@@ -27,7 +27,7 @@ function MapView({ address }:any) {
   console.log(position);
   return (
     <APIProvider apiKey="AIzaSyDU-2D0eKhuH9c8VCUpN2raOMHf3jCM5ko">
-      <div style={{ height: "100vh", width: "100vh" }}>
+      <div style={{ height: "90vh" }}>
         <Map zoom={18} center={position} onTilesLoaded={loadPosition}>
           <Marker position={position} />
         </Map>

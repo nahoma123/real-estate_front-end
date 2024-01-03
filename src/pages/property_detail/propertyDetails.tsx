@@ -67,7 +67,8 @@ const PropertyDetails: React.FC = () => {
   }, []);
 
   return (
-    <Box marginTop="100px">
+    <div className="mt-56 md:mt-20">
+      <Box>
       <Container>
         <Box marginTop={3} marginBottom={4}>
           <Box marginBottom={2}>
@@ -127,8 +128,6 @@ const PropertyDetails: React.FC = () => {
                     >
                       Beds: {property?.bed_number}
                     </Typography>
-                  </Box>
-                  <Box flexGrow={1}>
                     <Typography
                       variant="body1"
                       component="div"
@@ -176,6 +175,7 @@ const PropertyDetails: React.FC = () => {
         </Box>
       </Container>
     </Box>
+    </div>
   );
 };
 
