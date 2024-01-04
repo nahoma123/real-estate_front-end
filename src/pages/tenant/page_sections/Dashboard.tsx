@@ -97,35 +97,39 @@ const DashboardSecond = () => {
 
   return (
     <div className="my-8 border-2 rounded-lg shadow pt-8" style={{ minHeight: "500px" }}>
-        <div className='flex flex-row'>
-            <CustomListItem address={selectedUserRental?.address} status={selectedUserRental?.status} />
-            <div className='mx-8'>
-                <Select
-                    label="Select Rental"
-                    value={selectedUserRental?.property_id || ""}
-                    onChange={(e) => {
+    <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row'>
+        <CustomListItem address={selectedUserRental?.address} status={selectedUserRental?.status} />
+        <div className='mx-4 sm:mx-8 md:mx-8 lg:mx-8 mt-4 sm:mt-0 md:mt-0 lg:mt-0'>
+            <Select
+                label="Select Rental"
+                sx={{ minWidth: 120 }}
+                value={selectedUserRental?.property_id || ""}
+                onChange={(e) => {
                     const selectedRental = userRentals?.rentals.find(rental => rental.property_id === e.target.value);
                     setSelectedUserRental(selectedRental);
-                    }}
-                >
-                    {userRentals?.rentals.map(rental => (
-                    <MenuItem key={rental.property_id} value={rental.property_id}>{rental.address}</MenuItem>
-                    ))}
-                </Select>
-            </div>
+                }}
+            >
+                {userRentals?.rentals.map(rental => (
+                    <MenuItem key={rental.property_id} value={rental.property_id}><p className='text-xs'>{rental.address}</p></MenuItem>
+                ))}
+            </Select>
         </div>
-
-      <Divider
-        sx={{
-          marginLeft: "5%",
-          marginRight: "5%",
-          marginTop: "10px",
-          marginBottom: "10px",
-        }}
-      />
-      <div className='mx-8 s'>
-      </div>
     </div>
+
+    <Divider
+        sx={{
+            marginLeft: "5%",
+            marginRight: "5%",
+            marginTop: "10px",
+            marginBottom: "10px",
+        }}
+    />
+
+    <div className='mx-4 sm:mx-8 md:mx-8 lg:mx-8'>
+        {/* Add your responsive content here */}
+    </div>
+</div>
+
   );
 };
 

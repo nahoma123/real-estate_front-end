@@ -56,6 +56,47 @@ interface HeaderProps {
   headerLeft?: JSX.Element;
 }
 
+const CustomDropdown = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate()
+  const handleClick = (event:any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleNavigate = (path:any) => {
+    handleClose();
+    navigate(path);
+  };
+
+  return (
+    <Grid
+      item
+      md={3}
+      justifyContent="center"
+      alignItems="center"
+      container
+    >
+
+          <Button sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.1rem', lg: '1.1rem' }, fontWeight: '700', color:"black", marginLeft: { xs: 0, md: '10px' } }} style ={{textTransform: 'none'}} onClick={handleClick}>
+            Dashboard
+          </Button>
+
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={() => handleNavigate('/tenant/dashboard')}>Tenant</MenuItem>
+          <MenuItem onClick={() => handleNavigate('/landlord/dashboard')}>Landlord</MenuItem>
+        </Menu>
+    </Grid>
+  );
+};
+
 const Header: React.FC<HeaderProps> = ({
   headerType = "Type2",
   headerLeft,
@@ -198,7 +239,7 @@ const Header: React.FC<HeaderProps> = ({
             <Grid item container >
               <Grid
                 item
-                md={5}
+                md={3}
                 justifyContent="center"
                 alignItems="center"
                 container
@@ -223,7 +264,7 @@ const Header: React.FC<HeaderProps> = ({
 
               <Grid
                 item
-                md={4}
+                md={3}
                 justifyContent="center"
                 alignItems="center"
                 container
@@ -236,6 +277,19 @@ const Header: React.FC<HeaderProps> = ({
                   </StyledDropdownText>
                 </StyledDropdown>
               </Grid>
+
+              <Grid
+                item
+                md={3}
+                justifyContent="center"
+                alignItems="center"
+                container
+              >
+                {
+                  user == null? <></> : <CustomDropdown/>
+                }
+              </Grid>
+              
             </Grid>
             {/* docs */}
           </StyledGrid>

@@ -35,6 +35,6 @@ export const PrivateWrapper = ({ children }: PrivateWrapperProps) => {
   if (isAuthenticated) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/user_account" />;
+    return <Navigate to="/user_account/landlord" />;
   }
 };

@@ -97,9 +97,9 @@ const DashboardLandlord = () => {
 
   return (
     <div className="my-8 border-2 rounded-lg shadow pt-8" style={{ minHeight: "500px" }}>
-        <div className='flex flex-row'>
-            <CustomListItem address={selectedlandlord?.address} status={selectedlandlord?.status} />
-            <div className='mx-8'>
+    <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row'>
+        <CustomListItem address={selectedlandlord?.address} status={selectedlandlord?.status} />
+        <div className='mx-4 sm:mx-8 md:mx-8 lg:mx-8 mt-4 sm:mt-0 md:mt-0 lg:mt-0'>
                 <Select
                     label="Select Rental"
                     value={selectedlandlord?.property_id || ""}
@@ -109,7 +109,7 @@ const DashboardLandlord = () => {
                     }}
                 >
                     {landlord?.rentals.map(rental => (
-                    <MenuItem key={rental.property_id} value={rental.property_id}>{rental.address}</MenuItem>
+                    <MenuItem key={rental.property_id} value={rental.property_id}><p className='text-xs'>{rental.address}</p></MenuItem>
                     ))}
                 </Select>
             </div>
