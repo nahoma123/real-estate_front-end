@@ -30,6 +30,32 @@ interface UserProperty {
   emailAddress?: string;
 }
 
+interface Rental {
+  id: number;
+  property_id: string;
+  status: string;
+  tenant_id: string;
+  amount: number;
+  address: string;
+  postal_code: string;
+  property_type: string;
+  images: string[];
+  reception_number: number;
+  bed_number: number;
+  bath_number: number;
+  property_details: string;
+  epc: string;
+  features: string[];
+  furnished: string;
+  next_inspection_date: string;
+  created_at: string;
+  updated_at: string;
+}
+
+interface RentalList {
+  rentals: Rental[];
+}
+
 const CustomListItem: React.FC<UserProperty> = ({ address, status }) => {
   return (
     <Grid container>
@@ -160,10 +186,17 @@ const LandLordBody: React.FC = () => {
   const theme = useTheme();
 
   const [userProperties, setUserProperties] = useState<UserProperty[]>();
+  const [ userRentals, setUserRentals ] = useState<RentalList[]>();
   const [activeValuations, setActiveValuations] =
     useState<BookingValuationData[]>();
 
   useEffect(() => {
+    let user = localStorage.getItem("user");
+    if (user != null) {
+      let userObject = JSON.parse(user);
+      console.log(userObject.rentals)
+      setUserRentals(userObject);
+    }
     setUserProperties([
       {
         address: "Address 12, LimbCity",
@@ -230,7 +263,7 @@ const LandLordBody: React.FC = () => {
     >
       {userProperties?.map(function (item, i) {
         return (
-          <>
+          <div style={{minHeight:"500px"}}>
             <CustomListItem address={item.address} status={item.status} />
             <Divider
               sx={{
@@ -308,7 +341,7 @@ const LandLordBody: React.FC = () => {
             >
               <Alert severity="error">{error}</Alert>
             </Snackbar>
-          </>
+          </div>
         );
       })}
     </Paper>

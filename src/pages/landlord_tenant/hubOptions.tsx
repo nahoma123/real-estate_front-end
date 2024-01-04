@@ -1,4 +1,4 @@
-import { Box, Typography, lighten } from "@mui/material";
+import { Box, Typography, lighten, useMediaQuery, IconButton, Menu, MenuItem } from "@mui/material";
 import React, { useState } from "react";
 import { styled } from "@mui/system";
 import { List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
@@ -9,11 +9,13 @@ import { useNavigate } from "react-router-dom";
 import HandymanIcon from '@mui/icons-material/Handyman';
 import ArticleIcon from '@mui/icons-material/Article';
 import HouseIcon from '@mui/icons-material/House';
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from '@mui/icons-material/Close';
 
 const HubOptionsContainer = styled(Box)(({ theme }) => ({
   width: "240px",
   flexShrink: 0,
-  margin:"0px",
+  margin: "0px",
   marginTop: "40px",
   backgroundColor: lighten(theme.palette.action.disabledBackground, 0.8),
   borderRadius: "16px"
@@ -46,8 +48,8 @@ const HubOptionButton: React.FC<HubOptionButtonProps> = ({
       icon = <InboxIcon />;
       break;
     case 'Properties':
-    icon = <HouseIcon />;
-    break;
+      icon = <HouseIcon />;
+      break;
     default:
       icon = null;
   }
@@ -64,12 +66,24 @@ const HubOptionButton: React.FC<HubOptionButtonProps> = ({
     </ListItemButton>
   );
 };
+
 const HubOptions: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("Inbox");
+  const [activeTab, setActiveTab] = useState("Dashboard");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const isSmallScreen = useMediaQuery('(max-width:600px)'); // Set the breakpoint as needed
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleTabClick = (tabName: string) => {
     setActiveTab(tabName);
+    handleMenuClose(); // Close the menu after selecting a tab
     switch (tabName) {
       case 'Dashboard':
         navigate("/landlord/dashboard");
@@ -82,6 +96,7 @@ const HubOptions: React.FC = () => {
         break;
       case 'Messages':
         navigate("/landlord/messages");
+        break;
       case 'Properties':
         navigate("/landlord/properties");
         break;
@@ -89,6 +104,56 @@ const HubOptions: React.FC = () => {
         // Handle other cases if needed
     }
   };
+
+  if (isSmallScreen) {
+    return (
+      <div>
+        <IconButton onClick={handleMenuOpen}>
+          {anchorEl ? <CloseIcon /> : <MenuIcon />}
+        </IconButton>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleMenuClose}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <MenuItem onClick={() => handleTabClick("Dashboard")}>
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            Dashboard
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Notification")}>
+            <ListItemIcon>
+              <CircleNotificationsIcon />
+            </ListItemIcon>
+            Notification
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("My Contract")}>
+            <ListItemIcon>
+              <ArticleIcon />
+            </ListItemIcon>
+            My Contract
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Messages")}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            Messages
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Properties")}>
+            <ListItemIcon>
+              <HouseIcon />
+            </ListItemIcon>
+            Properties
+          </MenuItem>
+        </Menu>
+      </div>
+    );
+  }
 
   return (
     <HubOptionsContainer>

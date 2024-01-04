@@ -20,6 +20,10 @@ import { LandLordBody } from "./landlordBody";
 import { Route, Routes, useParams } from "react-router-dom";
 import { getRequest } from "../../utils/getRequest";
 import { VALUATIONS } from "../../constants/api";
+import Maintenance from "./page_sections/Maintenance";
+import MyContracts from "./page_sections/MyContracts";
+import Messages from "./page_sections/Messages";
+import DashboardSecond from "./page_sections/Dashboard";
 
 const BlackBackground = styled("div")({
   backgroundColor: "#333",
@@ -116,22 +120,26 @@ const FreeLetsHubTenant: React.FC = () => {
   let component: JSX.Element | null;
   // Use the `params.subRoute` value to render the appropriate components
 
+//   if (params.subRoute === "dashboard") {
+//     component = (
+//       <Dashboard
+//         handleButtonChange={handleButtonChange}
+//         selectedButton={selectedButton}
+//       />
+//     );
+//   }
   if (params.subRoute === "dashboard") {
-    component = (
-      <Dashboard
-        handleButtonChange={handleButtonChange}
-        selectedButton={selectedButton}
-      />
-    );
+    component = <> <DashboardSecond/> </>
   }
-  else if(params.subRoute === "notification"){
-    component = <div className="my-8 h-96">Maintenance Section</div>
+  
+  else if(params.subRoute === "maintenance"){
+    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}} > <Maintenance/> </div>
   }
   else if(params.subRoute === "mycontracts"){
-    component = <div className="my-8">My Contracts Section</div>
+    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><MyContracts/></div>
   }
   else if(params.subRoute === "messages"){
-    component = <div className="my-8">Messages Section</div>
+    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Messages/></div>
   }
    else {
     component = <></>;
