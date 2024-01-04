@@ -147,7 +147,7 @@ const FreeLetsHubTenant: React.FC = () => {
 
 
   return (
-    <div className="mt-56 lg:mt-0">
+    <div className="mt-64 lg:mt-0">
       <Box>
       <Box display={"flex"} alignContent={"center"} justifyContent={"center"}>
         <Header headerType="Type1" />
