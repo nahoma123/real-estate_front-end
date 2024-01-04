@@ -20,6 +20,7 @@ import { BookValuationRegistrationConfirmation } from "./pages/book_valuation/bo
 import FindProperties from "./pages/find_properties/findProperties";
 import PropertyDetails from "./pages/property_detail/propertyDetails";
 import FreeLetsHub from "./pages/landlord_tenant/landlordTenant";
+import FreeLetsHubTenant from "./pages/tenant/Tenant";
 import { AdminProperties } from "./pages/admin_properties/adminProperties";
 import { AdminDrawer } from "./pages/admin_dashboard/adminDrawer";
 import { AdminValuation } from "./pages/admin_valuations/adminValuations";
@@ -197,6 +198,18 @@ function App(): JSX.Element {
                     <UnContained>
                       <PrivateWrapper>
                         <FreeLetsHub />
+                      </PrivateWrapper>
+                    </UnContained>
+                  </MainLayout>
+                }
+              />
+              <Route
+                path="/tenant/:subRoute"
+                element={
+                  <MainLayout>
+                    <UnContained>
+                      <PrivateWrapper>
+                        <FreeLetsHubTenant />
                       </PrivateWrapper>
                     </UnContained>
                   </MainLayout>
