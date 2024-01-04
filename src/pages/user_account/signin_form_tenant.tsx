@@ -30,11 +30,12 @@ const LoginFormTenant: React.FC = () => {
       const responseData = await loginUser_Tenant(data?.email, data?.password);
       localStorage.setItem("token", responseData?.data?.token)
       localStorage.setItem("user", JSON.stringify(responseData?.data?.user))
-      if (responseData?.data?.user?.role === "ADMIN_ROLE"){
-        navigate("/admin_dashboard/valuations", {replace: true})
-      }else{
-        navigate("/landlord_tenant/dashboard", {replace: true})
-      }
+      navigate("/tenant/dashboard");
+      // if (responseData?.data?.user?.role === "ADMIN_ROLE"){
+      //   navigate("/admin_dashboard/valuations", {replace: true})
+      // }else{
+      //   navigate("/landlord_tenant/dashboard", {replace: true})
+      // }
     } catch (err: any) {
       console.log(err)
       setError(err?.error?.message); // Set the error message

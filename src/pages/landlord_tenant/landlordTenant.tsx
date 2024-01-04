@@ -57,14 +57,11 @@ interface DashboardProps {
   ): void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({
-  selectedButton,
-  handleButtonChange,
-}) => {
+const Dashboard: React.FC<DashboardProps> = () => {
   return (
     <Grid container>
       <Grid item xs={12} sm={10} md={10} lg={10}>
-        <CustomHeaderImageContainer>
+        {/* <CustomHeaderImageContainer>
           <CustomBox>
             <Grid container>
               <Grid
@@ -94,10 +91,10 @@ const Dashboard: React.FC<DashboardProps> = ({
                   </ToggleButton>
                   </ToggleButtonGroup>
                 </Grid>
-                <Grid md={6}>{/* <LandLordBody /> */}</Grid>
+                <Grid md={6}> <LandLordBody /></Grid>
               </Grid>
             </CustomBox>
-          </CustomHeaderImageContainer>
+          </CustomHeaderImageContainer> */}
           <LandLordBody />
         </Grid>
         <Grid xs={12} sm={2} md={2} lg={2}></Grid>
@@ -126,7 +123,19 @@ const FreeLetsHub: React.FC = () => {
         selectedButton={selectedButton}
       />
     );
-  } else {
+  }else if(params.subRoute === "maintenance"){
+    component = <div className="my-8 h-96">Maintenance Section</div>
+  }
+  else if(params.subRoute === "mycontracts"){
+    component = <div className="my-8">My Contracts Section</div>
+  }
+  else if(params.subRoute === "messages"){
+    component = <div className="my-8">Messages Section</div>
+  }
+  else if(params.subRoute === "properties"){
+    component = <div className="my-8">Properties Section</div>
+  }
+   else {
     component = <></>;
   }
 

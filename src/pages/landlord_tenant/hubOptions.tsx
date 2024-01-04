@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import { styled } from "@mui/system";
 import { List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import InboxIcon from "@mui/icons-material/Inbox";
+import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import MailIcon from "@mui/icons-material/Mail";
+import { useNavigate } from "react-router-dom";
+import HandymanIcon from '@mui/icons-material/Handyman';
+import ArticleIcon from '@mui/icons-material/Article';
+import HouseIcon from '@mui/icons-material/House';
 
 const HubOptionsContainer = styled(Box)(({ theme }) => ({
   width: "240px",
@@ -25,24 +30,64 @@ const HubOptionButton: React.FC<HubOptionButtonProps> = ({
   activeTab,
   handleTabClick,
 }) => {
+  let icon;
+
+  switch (label) {
+    case 'Dashboard':
+      icon = <MailIcon />;
+      break;
+    case 'Notification':
+      icon = <CircleNotificationsIcon />;
+      break;
+    case 'My Contract':
+      icon = <ArticleIcon />;
+      break;
+    case 'Messages':
+      icon = <InboxIcon />;
+      break;
+    case 'Properties':
+    icon = <HouseIcon />;
+    break;
+    default:
+      icon = null;
+  }
+
   return (
     <ListItemButton
       selected={activeTab === label}
       onClick={() => handleTabClick(label)}
     >
       <ListItemIcon>
-        <MailIcon />
+        {icon}
       </ListItemIcon>
       <ListItemText primary={label} />
     </ListItemButton>
   );
 };
-
 const HubOptions: React.FC = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Inbox");
 
   const handleTabClick = (tabName: string) => {
     setActiveTab(tabName);
+    switch (tabName) {
+      case 'Dashboard':
+        navigate("/landlord/dashboard");
+        break;
+      case 'Notification':
+        navigate("/landlord/notification");
+        break;
+      case 'My Contract':
+        navigate("/landlord/mycontracts");
+        break;
+      case 'Messages':
+        navigate("/landlord/messages");
+      case 'Properties':
+        navigate("/landlord/properties");
+        break;
+      default:
+        // Handle other cases if needed
+    }
   };
 
   return (
@@ -62,6 +107,26 @@ const HubOptions: React.FC = () => {
           <HubOptionButton
             activeTab={activeTab}
             label="Dashboard"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Notification"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="My Contract"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Messages"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Properties"
             handleTabClick={handleTabClick}
           />
         </List>

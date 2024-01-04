@@ -192,7 +192,7 @@ function App(): JSX.Element {
                 }
               />
               <Route
-                path="/landlord_tenant/:subRoute"
+                path="/landlord/:subRoute"
                 element={
                   <MainLayout>
                     <UnContained>
