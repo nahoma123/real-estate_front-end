@@ -20,6 +20,11 @@ import { LandLordBody } from "./landlordBody";
 import { Route, Routes, useParams } from "react-router-dom";
 import { getRequest } from "../../utils/getRequest";
 import { VALUATIONS } from "../../constants/api";
+import Notification from "./page_section/Notification";
+import MyContract from "./page_section/MyContract";
+import Messages from "./page_section/Messages";
+import Properties from "./page_section/Properties";
+import DashboardLandlord from "./page_section/DashboardLandlord";
 
 const BlackBackground = styled("div")({
   backgroundColor: "#333",
@@ -116,24 +121,26 @@ const FreeLetsHub: React.FC = () => {
   let component: JSX.Element | null;
   // Use the `params.subRoute` value to render the appropriate components
 
+  // if (params.subRoute === "dashboard") {
+  //   component = (
+  //     <Dashboard
+  //       handleButtonChange={handleButtonChange}
+  //       selectedButton={selectedButton}
+  //     />
+  //   );
   if (params.subRoute === "dashboard") {
-    component = (
-      <Dashboard
-        handleButtonChange={handleButtonChange}
-        selectedButton={selectedButton}
-      />
-    );
-  }else if(params.subRoute === "maintenance"){
-    component = <div className="my-8 h-96">Maintenance Section</div>
+    component = <div><DashboardLandlord/></div>
+  }else if(params.subRoute === "notification"){
+    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Notification/></div>
   }
   else if(params.subRoute === "mycontracts"){
-    component = <div className="my-8">My Contracts Section</div>
+    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><MyContract/></div>
   }
   else if(params.subRoute === "messages"){
-    component = <div className="my-8">Messages Section</div>
+    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Messages/></div>
   }
   else if(params.subRoute === "properties"){
-    component = <div className="my-8">Properties Section</div>
+    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Properties/></div>
   }
    else {
     component = <></>;

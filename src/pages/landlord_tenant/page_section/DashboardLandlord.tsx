@@ -21,7 +21,7 @@ interface Rental {
   id: number;
   property_id: string;
   status: string;
-  tenant_id: string;
+  landlord_id: string;
   amount: number;
   address: string;
   postal_code: string;
@@ -78,19 +78,19 @@ const CustomListItem = ({ address, status }: any) => {
   );
 };
 
-const DashboardSecond = () => {
+const DashboardLandlord = () => {
   const navigate = useNavigate();
-  const [userRentals, setUserRentals] = useState<RentalList>();
-  const [selectedUserRental, setSelectedUserRental] = useState<Rental | undefined>();
+  const [landlord, setLandlord] = useState<RentalList>();
+  const [selectedlandlord, setSelectedLandlord] = useState<Rental | undefined>();
 
   useEffect(() => {
     // Fetch user data from localStorage
     let user = localStorage.getItem("user");
     if (user != null) {
       let userObject = JSON.parse(user);
-      setUserRentals(userObject);
+      setLandlord(userObject);
       if(userObject.rentals.length >0){
-        setSelectedUserRental(userObject.rentals[0])
+        setSelectedLandlord(userObject.rentals[0])
       }
     }
   }, []);
@@ -98,17 +98,17 @@ const DashboardSecond = () => {
   return (
     <div className="my-8 border-2 rounded-lg shadow pt-8" style={{ minHeight: "500px" }}>
         <div className='flex flex-row'>
-            <CustomListItem address={selectedUserRental?.address} status={selectedUserRental?.status} />
+            <CustomListItem address={selectedlandlord?.address} status={selectedlandlord?.status} />
             <div className='mx-8'>
                 <Select
                     label="Select Rental"
-                    value={selectedUserRental?.property_id || ""}
+                    value={selectedlandlord?.property_id || ""}
                     onChange={(e) => {
-                    const selectedRental = userRentals?.rentals.find(rental => rental.property_id === e.target.value);
-                    setSelectedUserRental(selectedRental);
+                    const selectedRental = landlord?.rentals.find(rental => rental.property_id === e.target.value);
+                    setSelectedLandlord(selectedRental);
                     }}
                 >
-                    {userRentals?.rentals.map(rental => (
+                    {landlord?.rentals.map(rental => (
                     <MenuItem key={rental.property_id} value={rental.property_id}>{rental.address}</MenuItem>
                     ))}
                 </Select>
@@ -125,8 +125,23 @@ const DashboardSecond = () => {
       />
       <div className='mx-8 s'>
       </div>
+      <Box
+              display={"flex"}
+              alignContent={"center"}
+              justifyContent={"center"}
+            >
+              <Button
+                variant="outlined"
+                fullWidth
+                sx={{ margin: "20px" }}
+                onClick={() => navigate("/book_valuation")}
+              >
+                Book Valuation
+              </Button>
+            </Box>
     </div>
   );
 };
 
-export default DashboardSecond;
+export default DashboardLandlord;
+
