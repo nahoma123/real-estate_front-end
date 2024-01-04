@@ -10,11 +10,25 @@ import {
 } from "../header_menu/header_menu";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AdminPanelSettings, Person3Outlined } from "@mui/icons-material";
-const StyledAppBar = styled(AppBar)({
+import { useTheme } from "@mui/material/styles";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
+
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "#fff",
   color: "#fff",
   boxShadow: "none",
-});
+
+  // Default position for large screens
+  position: "fixed",
+
+  [theme.breakpoints.down("sm")]: {
+    position: "absolute",
+  },
+  [theme.breakpoints.only("md")]: {
+    position: "absolute",
+  },
+}));
 
 const StyledButton2 = styled(Button)({
   height: "60%",
@@ -73,22 +87,17 @@ const CustomDropdown = () => {
   };
 
   return (
-    <Grid
-      item
-      md={3}
-      justifyContent="center"
-      alignItems="center"
-      container
-    >
+    <Grid>
 
-          <Button sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.1rem', lg: '1.1rem' }, fontWeight: '700', color:"black", marginLeft: { xs: 0, md: '10px' } }} style ={{textTransform: 'none'}} onClick={handleClick}>
-            Dashboard
+          <Button variant="text" sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.1rem', lg: '1.1rem' }, fontWeight: '700', color:"black", marginLeft: { xs: 0, md: '10px' } }} style ={{textTransform: 'none'}} onClick={handleClick}>
+            FreeLets Hub <ArrowDropDownIcon style={{ marginLeft: '5px' }} />
           </Button>
 
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          
         >
           <MenuItem onClick={() => handleNavigate('/tenant/dashboard')}>Tenant</MenuItem>
           <MenuItem onClick={() => handleNavigate('/landlord/dashboard')}>Landlord</MenuItem>
@@ -229,7 +238,7 @@ const Header: React.FC<HeaderProps> = ({
   }
 
   return (
-    <StyledAppBar position="absolute" >
+    <StyledAppBar>
       <Toolbar>
         <Grid container component="div" display={"flex"} direction="row">
           <Grid container item md={2} sm={0}>
@@ -280,7 +289,7 @@ const Header: React.FC<HeaderProps> = ({
 
               <Grid
                 item
-                md={3}
+                md={4}
                 justifyContent="center"
                 alignItems="center"
                 container

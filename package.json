@@ -21,6 +21,7 @@
     "@tanstack/react-query": "^5.14.6",
     "@tanstack/react-query-devtools": "^5.14.7",
     "@vis.gl/react-google-maps": "^0.4.2",
+    "antd": "^5.12.7",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
     "google-maps-react": "^2.0.6",
