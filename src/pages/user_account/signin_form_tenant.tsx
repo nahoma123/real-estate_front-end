@@ -2,7 +2,7 @@ import { LockOpen } from "@mui/icons-material";
 import { Box, Button, LinearProgress } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { loginUser } from "../../services/apiService";
+import { loginUser_Tenant } from "../../services/apiService";
 import TextFieldWithValidation from "../../components/common/TextFieldWithValidation";
 import PasswordFieldWithValidation from "../../components/common/PasswordFieldWithValidation";
 import ErrorSnackbar from "../../components/common/ErrorSnackbar";
@@ -27,7 +27,7 @@ const LoginFormTenant: React.FC = () => {
   const onSubmit = handleSubmit(async (data:any) => {
     try {
       setIsSubmitting(true);
-      const responseData = await loginUser(data?.email, data?.password);
+      const responseData = await loginUser_Tenant(data?.email, data?.password);
       localStorage.setItem("token", responseData?.data?.token)
       localStorage.setItem("user", JSON.stringify(responseData?.data?.user))
       if (responseData?.data?.user?.role === "ADMIN_ROLE"){

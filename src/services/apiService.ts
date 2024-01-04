@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { REGISTER_URL, LOGIN_URL,
+import { REGISTER_URL, LOGIN_URL,LOGIN_URL_ADMIN,LOGIN_URL_LANDLORD,LOGIN_URL_TENANT,
   FORGOT_REQUEST_URL,
   VERIFY_FORGOT_REQUEST_URL,
   ADD_VALUATION_URL,
@@ -95,6 +95,24 @@ export async function registerUser(
 export async function loginUser(email: string, password: string): Promise<any> {
   const body = { email, password };
   const response = await callApi<any>(LOGIN_URL, "POST", body);
+  return response;
+}
+
+export async function loginUser_Landlord(email: string, password: string): Promise<any> {
+  const body = { email, password };
+  const response = await callApi<any>(LOGIN_URL_LANDLORD, "POST", body);
+  return response;
+}
+
+export async function loginUser_Tenant(email: string, password: string): Promise<any> {
+  const body = { email, password };
+  const response = await callApi<any>(LOGIN_URL_TENANT, "POST", body);
+  return response;
+}
+
+export async function loginUser_Admin(email: string, password: string): Promise<any> {
+  const body = { email, password };
+  const response = await callApi<any>(LOGIN_URL_ADMIN, "POST", body);
   return response;
 }
 

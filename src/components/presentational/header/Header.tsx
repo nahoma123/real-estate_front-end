@@ -132,7 +132,7 @@ const Header: React.FC<HeaderProps> = ({
             ? SignInButton()
             : UserButton(
                 <Person3Outlined fontSize="medium" />,
-                "/user_account",
+                "/user_account/Manage",
                 user?.last_name
               );
         break;
@@ -161,7 +161,7 @@ const Header: React.FC<HeaderProps> = ({
         ? SignInButton()
         : UserButton(
             <Person3Outlined fontSize="medium" />,
-            "/user_account",
+            "/user_account/Manage",
             user?.last_name
           );
   }

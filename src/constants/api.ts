@@ -7,6 +7,9 @@ const UPLOAD_IMAGE: string = AddBase("/upload_image");
 const ADD_VALUATION_URL: string = AddBase("estates/add_valuation");
 const UPDATE_VALUATION: string = AddBase("estates");
 const LOGIN_URL: string = AddBase("auth/login");
+const LOGIN_URL_LANDLORD : string = AddBase("auth/landlord/login");
+const LOGIN_URL_TENANT : string = AddBase("auth/tenant/login");
+const LOGIN_URL_ADMIN : string = AddBase("auth/admin/login");
 const FORGOT_REQUEST_URL: string = AddBase("users/request_forgot_password");
 const VERIFY_FORGOT_REQUEST_URL: string = AddBase(
   "users/verify_forgot_password"
@@ -24,6 +27,9 @@ export {
   UPLOAD_IMAGE,
   REGISTER_URL,
   LOGIN_URL,
+  LOGIN_URL_ADMIN,
+  LOGIN_URL_TENANT,
+  LOGIN_URL_LANDLORD,
   FORGOT_REQUEST_URL,
   VERIFY_FORGOT_REQUEST_URL,
   ADD_VALUATION_URL,

@@ -112,7 +112,7 @@ const BookValuationRegistrationConfirmation: React.FC<
               variant="contained"
               style={{ borderRadius: "0px", marginTop: "20px" }}
               fullWidth
-              onClick={() => navigate("/user_account")}
+              onClick={() => navigate("/user_account/landlord")}
               startIcon={<Login />}
             >
               Login to Freelets
