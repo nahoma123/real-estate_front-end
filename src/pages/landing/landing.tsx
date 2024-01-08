@@ -14,6 +14,7 @@ import BlockBar from "../../components/pages/land_lord_dashboard/AdvBar/adv_bar"
 import Offers from "../../components/presentational/offers/offers";
 import { useNavigate } from "react-router-dom";
 import HeroImg from "../../assets/images/hero.jpg";
+import WhyChoose from "./WhyChoose";
 
 const LandingPage: React.FC = () => {
   const [valuationValue, setValuationValue] = useState("");
@@ -171,6 +172,7 @@ const LandingPage: React.FC = () => {
         <AdvCarousel />
       </Grid>
       <OnboardingModalWrapper />
+      <WhyChoose/>
     </Box>
   );
 };
