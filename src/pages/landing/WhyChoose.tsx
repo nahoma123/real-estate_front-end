@@ -1,5 +1,5 @@
 import React from 'react';
-import House from '../../assets/images/House.jpg';
+import House from '../../assets/images/House.png';
 import Hands from '../../assets/images/Hands.jpg';
 import MobileStat from '../../assets/images/MobileStat.jpg';
 
