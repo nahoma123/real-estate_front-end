@@ -3,6 +3,7 @@ import { Header } from "../presentational/header/Header";
 import Footer from "./footer/footer";
 import { Box } from "@mui/material";
 import { ModalProvider } from "../../context/modal_container";
+import FooterMain from "./footer/FooterMain";
 
 type MainLayoutProps = {
   children: ReactNode;
@@ -18,6 +19,7 @@ function MainLayout({ children }: MainLayoutProps) {
         <Header />
         <Box sx={{ marginTop: "64px" }}>{children}</Box>
         <Footer />
+        <FooterMain/>
       </ModalProvider>
     </div>
   );
