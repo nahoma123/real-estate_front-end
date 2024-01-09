@@ -36,7 +36,7 @@ const SavingsCalculator = () => {
   };
 
   return (
-    <Paper elevation={3} className="p-4 mt-5 min-w-full text-center">
+    <Paper elevation={3} className="p-4 min-w-full text-center" style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}>
       <Box className="mt-5">
         <Typography variant="h6" display={"inline"}>
           Savings based on a high street commission of

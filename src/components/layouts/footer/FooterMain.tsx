@@ -16,11 +16,23 @@ const FooterMain = () => {
           <img src={freelets} alt="Freelets logo" className='w-full' />
         </div>
         <div className='w-full sm:w-1/3 flex justify-center'>
-          <Twitter className='mx-2' />
-          <Facebook className='mx-2' />
-          <YouTube className='mx-2' />
-          <LinkedIn className='mx-2' />
-          <Instagram className='mx-2' />
+        <div className='w-full sm:w-1/3 flex justify-center'>
+          <a href='https://twitter.com' target='_blank' rel='noopener noreferrer' className='mx-2'>
+            <Twitter />
+          </a>
+          <a href='https://facebook.com' target='_blank' rel='noopener noreferrer' className='mx-2'>
+            <Facebook />
+          </a>
+          <a href='https://youtube.com' target='_blank' rel='noopener noreferrer' className='mx-2'>
+            <YouTube />
+          </a>
+          <a href='https://linkedin.com' target='_blank' rel='noopener noreferrer' className='mx-2'>
+            <LinkedIn />
+          </a>
+          <a href='https://instagram.com' target='_blank' rel='noopener noreferrer' className='mx-2'>
+            <Instagram />
+          </a>
+        </div>
         </div>
       </div>
       <div className='flex flex-col sm:flex-row justify-between my-8 mx-4 sm:mx-12'>
@@ -34,23 +46,23 @@ const FooterMain = () => {
         </div>
         <div className='mb-4 sm:mb-0'>
           <p className='font-semibold text-sm mb-2'>Information</p>
-          <p className='text-sm'>General terms and conditions</p>
-          <p className='text-sm'>Payment terms and conditions</p>
-          <p className='text-sm'>No Sale, No Fee</p>
-          <p className='text-sm'>Privacy Policy</p>
-          <p className='text-sm'>Cookie Policy</p>
-          <p className='text-sm'>Press</p>
+          <a href='#' className='text-sm block mb-1'>General terms and conditions</a>
+          <a href='#' className='text-sm block mb-1'>Payment terms and conditions</a>
+          <a href='#' className='text-sm block mb-1'>No Sale, No Fee</a>
+          <a href='#' className='text-sm block mb-1'>Privacy Policy</a>
+          <a href='#' className='text-sm block mb-1'>Cookie Policy</a>
+          <a href='#' className='text-sm block mb-1'>Press</a>
         </div>
         <div className='mb-4 sm:mb-0'>
           <p className='font-semibold text-sm mb-2'>Useful Links</p>
-          <p className='text-sm'>Contact</p>
-          <p className='text-sm'>FAQs</p>
-          <p className='text-sm'>Complaints Procedure</p>
-          <p className='text-sm'>Login</p>
-          <p className='text-sm'>Book a free evaluation</p>
-          <p className='text-sm'>Instant online evaluation</p>
-          <p className='text-sm'>Property Search</p>
-          <p className='text-sm'>Careers</p>
+          <a href='#' className='text-sm block mb-1'>Contact</a>
+          <a href='#' className='text-sm block mb-1'>FAQs</a>
+          <a href='#' className='text-sm block mb-1'>Complaints Procedure</a>
+          <a href='#' className='text-sm block mb-1'>Login</a>
+          <a href='#' className='text-sm block mb-1'>Book a free evaluation</a>
+          <a href='#' className='text-sm block mb-1'>Instant online evaluation</a>
+          <a href='#' className='text-sm block mb-1'>Property Search</a>
+          <a href='#' className='text-sm block mb-1'>Careers</a>
         </div>
         <div className='w-full sm:w-48'></div>
       </div>

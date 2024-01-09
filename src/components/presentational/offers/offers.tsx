@@ -68,7 +68,7 @@ const BulletPoint: React.FC<BulletPointProps> = ({ icon, children }) => (
 );
 
 const Offers: React.FC = () => (
-  <Grid marginTop={10} marginBottom={10} container>
+  <Grid marginTop={0} marginBottom={0} paddingTop={10} container>
     <Grid md={6}></Grid>
     <Grid md={6}>
       <Typography
@@ -82,7 +82,7 @@ const Offers: React.FC = () => (
       <BulletPoint
         icon={<img src={PoundIcon} alt="PoundIcon" width={20} height={16} />}
       >
-        <Typography><p className="text-sm lg:text-2xl">Highest rents achieved</p></Typography>
+        <Typography color={"black"}><p className="text-sm lg:text-2xl">Highest rents achieved</p></Typography>
       </BulletPoint>
       <div>
       <BulletPoint
@@ -92,7 +92,7 @@ const Offers: React.FC = () => (
       >
         <FlexContainer className="sm:flex-col md:flex-col lg:flex-row">
           <div className="flex flex-col">
-            <Typography className="">
+            <Typography className="" color={"black"}>
               <p className="text-sm lg:text-2xl">Listed on all major portals</p>
             </Typography>
           </div>
@@ -133,7 +133,7 @@ const Offers: React.FC = () => (
       <BulletPoint
         icon={<img src={PersonIcon} alt="Person" width={20} height={24} />}
       >
-        <Typography variant="h5" className="text-sm md:text-base lg:text-lg">
+        <Typography variant="h5" color={"black"} className="text-sm md:text-base lg:text-lg">
         <p className="text-sm lg:text-2xl">Viewings, communication, and set up</p>
         </Typography>
       </BulletPoint>
@@ -141,7 +141,7 @@ const Offers: React.FC = () => (
       <BulletPoint
         icon={<img src={ContractIcon} alt="Contract" width={24} height={24} />}
       >
-        <Typography variant="h5" className="text-sm md:text-base lg:text-lg">
+        <Typography variant="h5" color={"black"} className="text-sm md:text-base lg:text-lg">
           <p className="text-sm lg:text-2xl">
           Airtight contracts certified by the National Residential Landlords Association drawn up </p>
         </Typography>

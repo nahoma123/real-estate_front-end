@@ -18,7 +18,6 @@ function MainLayout({ children }: MainLayoutProps) {
       <ModalProvider>
         <Header />
         <Box sx={{ marginTop: "64px" }}>{children}</Box>
-        <Footer />
         <FooterMain/>
       </ModalProvider>
     </div>
