@@ -67,7 +67,7 @@ const PropertyDetails: React.FC = () => {
   }, []);
 
   return (
-    <div className="mt-56 md:mt-20">
+    <div className="mt-64 md:mt-20">
       <Box>
       <Container>
         <Box marginTop={3} marginBottom={4}>

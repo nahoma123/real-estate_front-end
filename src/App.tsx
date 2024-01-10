@@ -171,9 +171,7 @@ function App(): JSX.Element {
                 element={
                   <MainLayout>
                     <UnContained>
-                      <PrivateWrapper>
                         <FindProperties />
-                      </PrivateWrapper>
                     </UnContained>
                   </MainLayout>
                 }
@@ -184,9 +182,7 @@ function App(): JSX.Element {
                 element={
                   <MainLayout>
                     <UnContained>
-                      <PrivateWrapper>
                         <PropertyDetails />
-                      </PrivateWrapper>
                     </UnContained>
                   </MainLayout>
                 }
