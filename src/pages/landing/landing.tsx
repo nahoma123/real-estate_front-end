@@ -62,27 +62,22 @@ const LandingPage: React.FC = () => {
   // Let's value your home
   return (
     <Box>
-      <div style={divStyleMain} className="py-1">
-        <Container>
-          <Box marginTop={15} marginBottom={15}>
-            <Grid container marginTop={"10px"} marginBottom={"10px"}>
-              <Grid md={5}>
-              <Box>
-                  <Box className="sm:pt-3 md:pt-5 lg:pt-5 sm:pb-1 md:pb-2 lg:pb-2  ">
-                    <Grid justifyContent={{ sm: "center", md: "left", lg: "left" }}>
-                      <Typography
-                        sx={{ fontWeight: "bold" }}
-                        variant="h3"
-                        align="left"
-                        gutterBottom
-                      >
-                        <p className="mt-36 md:mt-2 ">Welcome to FreeLets</p>
+        <div style={{ ...divStyleMain, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} className="mt-48 md:mt-2 ">
+          <Container>
+            <Box marginTop={15} marginBottom={15} >
+              <Grid container marginTop={"10px"} marginBottom={"10px"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                <Grid item sx={{ width:"100%"}} >
+                  <Box>
+                    <Box className="sm:pt-3 md:pt-5 lg:pt-5 sm:pb-1 md:pb-2 lg:pb-2">
+                    <Grid container justifyContent={{ sm: "center", md: "center", lg: "center" }} alignItems="center">
+                      <Typography sx={{ fontWeight: "bold" }} variant="h4" align="center" gutterBottom>
+                        <p className="mt-20 md:mt-2 ">Welcome to FreeLets</p>
                       </Typography>
-                      <Typography variant="h5" align="left" style={{ display: "inline" }}>
+                      <Typography variant="h5" align="center" style={{ display: "inline" }}>
                         See how much you could save per year when you let your home for
                         <Typography
                           variant="h5"
-                          align="left"
+                          align="center"
                           fontWeight="1000"
                           style={{
                             display: "inline",
@@ -96,74 +91,50 @@ const LandingPage: React.FC = () => {
                         </Typography>
                       </Typography>
                     </Grid>
+                    </Box>
                   </Box>
-                </Box>
-                <Box marginTop={8} marginBottom={2} sx={{ width:"100%", paddingRight: { md: "60px" }}}>
-                  <form
-                    onSubmit={handleSubmit}
-                    style={{
-                      border: "1px solid #ccc",
-                      padding: "10px",
-                    }}
-                  >
-                    <Grid container>
-                      <Grid item xs={12} sm={8} md={8} lg={8} paddingLeft={4}>
-                        <TextField
-                          error={isInvalid}
-                          helperText={isInvalid && "Please enter at least 3 characters."}
-                          label="What's your postcode?"
-                          value={valuationValue}
-                          onChange={(event) => setValuationValue(event.target.value)}
-                          variant="standard"
-                          InputProps={{
-                            disableUnderline: true,
-                            style: {
-                              textAlign: "center",
-                              justifyItems: "center",
-                            },
-                          }}
-                          fullWidth
-                          style={{
-                            height: "100%",
-                            right: 0,
-                            width: "100%",
-                            border: "0px",
-                            padding: "0px",
-                          }}
-                        />
+                  <Box marginTop={8} marginBottom={2}  sx={{ textAlign: "center" }}>
+                    <form onSubmit={handleSubmit} >
+                      <Grid container alignItems="center" justifyContent="center">
+                        <Grid item xs={12} sm={8} md={6}>
+                          <TextField
+                            label="What's your postcode?"
+                            variant="outlined"
+                            fullWidth
+                            value={valuationValue}
+                            onChange={(event) => setValuationValue(event.target.value)}
+                            margin="normal"
+                            InputProps={{ sx: { backgroundColor: "white", borderTopRightRadius: 0, borderBottomRightRadius: 0 } }}
+                            style={{ 
+                              
+                              
+                            }}
+                          />
+                        </Grid>
+
+                        <Grid item xs={12} sm={4} md={3}>
+                          <Button type="submit" variant="contained" color="primary" fullWidth 
+                            style={{ 
+                              height: '58px', 
+                              marginTop:"8px" ,
+                              borderTopLeftRadius: 0,
+                              borderBottomLeftRadius: 0,
+                              }}>
+                            Book a free valuation
+                          </Button>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={12} sm={4} md={4} lg={4}>
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          color="primary"
-                          style={{
-                            height: "100%",
-                            borderRadius: "0px",
-                            width: "100%",
-                            border: "2px solid #948c1e",
-                            padding: "0px",
-                          }}
-                        >
-                          Submit
-                        </Button>
-                      </Grid>
-                    </Grid>
-                  </form>
-                </Box>
+                    </form>
+                  </Box>
+
+                </Grid>
               </Grid>
-              <Grid md={7}>
-                <div style={{ opacity: 0.8, width: '100%' }}>
-                  <img src={HeroImg} width="100%" alt="hero"/>
-                </div>
-              </Grid>
-            </Grid>
-          </Box>
-        </Container>
+            </Box>
+          </Container>
         </div>
         {/* offers */}
         <BlockBar />
-        <div style={divStyle}>
+        <div >
           <Container>
             <Grid
               container
@@ -198,7 +169,7 @@ const LandingPage: React.FC = () => {
             </Grid>
           </Container>
       </div>
-      <div style={divStyleSecond}>
+      <div >
         <Container>
           <Offers />
         </Container>
