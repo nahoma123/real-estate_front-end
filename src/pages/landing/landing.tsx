@@ -29,22 +29,6 @@ import WhyChoose from "./WhyChoose";
     width: '100%',
   };
 
-  const divStyle = {
-    backgroundImage: `url('${imageUrl}')`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    width: '100%',
-  };
-  const divStyleSecond = {
-    backgroundImage: `url('${topImageUrl}')`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    width: '100%',
-    height: '100%',  // Set the height to '100%' or adjust as needed
-  };
-
-
 const LandingPage: React.FC = () => {
   const [valuationValue, setValuationValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
