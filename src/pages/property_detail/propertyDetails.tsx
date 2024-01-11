@@ -31,14 +31,6 @@ import { useParams } from "react-router-dom";
 import { ImageCarousel } from "../../components/common/carousel";
 import { MapView } from "../../components/common/map";
 
-const topImageUrl = 'https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-
-const divStyleMain = {
-  backgroundImage: `url('${topImageUrl}')`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  width: '100%',
-};
 
 const BlackBackground = styled("div")({
   backgroundColor: "#333",
@@ -63,6 +55,14 @@ const PropertyDetails: React.FC = () => {
   const [err, setError] = useState("");
   const [filterRequest, setFilterRequest] = useState<PropertyForm>();
 
+  const topImageUrl = 'https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+  const divStyleMain = {
+    backgroundImage: `url('${topImageUrl}')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    width: '100%',
+  };
   async function handleFilter(data: PropertyForm) {
     setVisiting(false);
     try {
@@ -72,6 +72,7 @@ const PropertyDetails: React.FC = () => {
       setProperties(res?.data);
       if (res?.data.length !== 0) {
         setProperty(res?.data[0]);
+        console.log(res?.data[0]);
       }
       setLoading(false);
       setError("");
@@ -99,11 +100,11 @@ const PropertyDetails: React.FC = () => {
     <div className="mt-64 md:mt-20">
       <Box>
         <div style={divStyleMain} className="w-full h-96 flex flex-col justify-end items-start">
-          <div className="m-4">
+          <div className="m-4 flex md:flex-row flex-col">
             <Button
               variant="contained"
               startIcon={<GalleryIcon />}
-              style={{ marginRight: 8 }}
+              style={{ marginRight: 8, marginBottom:8 }}
             >
               Gallery
             </Button>
@@ -111,7 +112,7 @@ const PropertyDetails: React.FC = () => {
             <Button
               variant="contained"
               startIcon={<MapIcon />}
-              style={{ marginRight: 8 }}
+              style={{ marginRight: 8, marginBottom:8 }}
             >
               Map
             </Button>
@@ -119,48 +120,48 @@ const PropertyDetails: React.FC = () => {
             <Button
               variant="contained"
               startIcon={<StreetviewIcon />}
-              style={{ marginRight: 8 }}
+              style={{ marginRight: 8, marginBottom:8 }}
             >
               Streetview
             </Button>
 
-            <Button variant="contained" startIcon={<PlansIcon />}>
+            <Button variant="contained" startIcon={<PlansIcon />} style={{ marginRight: 8, marginBottom:8 }}>
               Plans
             </Button>
           </div>
         </div>
-        <div className="bg-indigo-800 w-full">
-          <div className="flex w-full">
-            <div className="flex flex-col w-full">
-              <div className="flex flex-row justify-between p-8 items-between">
+        <div className="w-full">
+          <div className="flex w-full flex-col md:flex-row">
+            <div className="flex flex-col w-full bg-indigo-800">
+              <div className="flex md:flex-row flex-col  justify-between p-8 items-between">
                 <div className="flex flex-col">
                   <Typography variant="button" fontSize={35} style={typographyStyle}>
-                    Lees Place
+                    {property?.address}
                   </Typography>
                   <Typography variant="button" style={typographyStyle}>
-                    London, W1K6LP
+                    {property?.street_address}
                   </Typography>
-                  <Button variant="contained" style={{ marginTop:"36px" }}>
+                  <Button variant="contained" style={{ marginTop:"36px", width:"30px" }}>
                     NEW
                   </Button>
                 </div>
-                <div className="flex flex-col items-end">
+                <div className="flex flex-col md:items-end items-start">
                   <Typography variant="button" style={typographyStyle}>
                     Guide Price
                   </Typography>
                   <Typography variant="button" fontSize={35} style={typographyStyle}>
-                    £1,100,000
+                    {property?.amount}
                   </Typography>
                 </div>
               </div>
               <div className="w-2/3 m-2">
                 <Divider />
               </div>
-              <div className="flex justify-between">
-                <div className="w-2/3">
-                  <Typography variant="button" marginLeft={4} style={typographyStyle}>
+              <div className="flex justify-between flex-wrap">
+                <div className="w-1/3 ml-4 flex flex-col md:flex-row">
+                  <Typography variant="button" marginLeft={2} style={typographyStyle}>
                   <HouseIcon style={iconStyle} />
-                    House
+                    {property?.property_type}
                   </Typography>
 
                   <Typography variant="button" marginLeft={2} style={typographyStyle}>
@@ -168,28 +169,28 @@ const PropertyDetails: React.FC = () => {
                     Ruler
                   </Typography>
                 </div>
-                <div className="mr-4">
-                  <Typography variant="button" marginRight={2} style={typographyStyle}>
+                <div className="mx-4 flex flex-col md:flex-row">
+                  <Typography variant="button" marginLeft={2} style={typographyStyle}>
                     <BedIcon style={iconStyle} />
-                    Bed
+                    {property?.bed_number}
                   </Typography>
 
-                  <Typography variant="button" marginRight={2} style={typographyStyle}>
+                  <Typography variant="button" marginLeft={2} style={typographyStyle}>
                     <BathroomIcon style={iconStyle} />
-                    Bathroom
+                    {property?.bath_number}
                   </Typography>
 
-                  <Typography variant="button" marginRight={2} style={typographyStyle}>
+                  <Typography variant="button" marginRight={2} marginLeft={2} style={typographyStyle}>
                     <SofaIcon style={iconStyle} />
                     Sofa
                   </Typography>
                 </div>
               </div>
             </div>
-            <div className="h-96 w-1/3 bg-white">
+            <div className="h-96 w-full md:w-1/3 bg-white">
               <div className="flex flex-col m-4">
                 <div className="flex" >
-                  <Typography variant="button" fontSize={20}>
+                  <Typography variant="button" sx={{ fontSize: { xs: '1rem', sm: '1rem', md: '1.3rem', lg: '1.3rem' }}}>
                     Contact an agent
                   </Typography>
                 </div>
@@ -227,7 +228,7 @@ const PropertyDetails: React.FC = () => {
           </div>
         </div>
       <Container>
-        <Box marginTop={3} marginBottom={4}>
+        {/* <Box marginTop={3} marginBottom={4}>
           <Box marginBottom={2}>
             <Typography fontSize={"2em"}>Property Details</Typography>
           </Box>
@@ -315,7 +316,7 @@ const PropertyDetails: React.FC = () => {
               <ImageCarousel images={property?.images.split(",")} />
             </Grid>
           </Grid>
-        </Box>
+        </Box> */}
       </Container>
       <Container>
         <Box marginBottom={2}>

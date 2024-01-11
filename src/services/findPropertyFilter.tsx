@@ -19,6 +19,7 @@ export interface PropertyData {
   user_id: string;
   amount: number;
   address: string;
+  street_address: string;
   coordinate: string;
   created_at: string;
   epc: string;
