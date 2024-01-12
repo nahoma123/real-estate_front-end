@@ -46,7 +46,7 @@ const BlackBackground = styled("div")({
   margin: "10px",
 });
 const typographyStyle = {
-  color: 'white',
+  color: 'black',
 };
 const iconStyle = {
   color: '#948c1e',
