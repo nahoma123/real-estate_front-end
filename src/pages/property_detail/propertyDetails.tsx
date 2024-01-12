@@ -30,6 +30,11 @@ import SavingsCalculator from "../../components/presentational/saving/saving";
 import { useParams } from "react-router-dom";
 import { ImageCarousel } from "../../components/common/carousel";
 import { MapView } from "../../components/common/map";
+import { List, ListItem, ListItemText, Paper } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, makeStyles } from '@mui/material';
+import dayjs from 'dayjs';
+
+
 
 
 const BlackBackground = styled("div")({
@@ -46,6 +51,17 @@ const iconStyle = {
 };
 
 
+const StyledTableContainer = styled(TableContainer)({
+  marginTop: '16px',
+});
+
+const StyledTableRow = styled(TableRow)({
+  '&:nth-of-type(odd)': {
+    backgroundColor: '#f3f3f3',
+  },
+});
+
+
 const PropertyDetails: React.FC = () => {
   const { property_id } = useParams();
   const [property, setProperty] = useState<PropertyData>();
@@ -54,6 +70,8 @@ const PropertyDetails: React.FC = () => {
   const [properties, setProperties] = useState<PropertyData[]>([]);
   const [err, setError] = useState("");
   const [filterRequest, setFilterRequest] = useState<PropertyForm>();
+  const formatDate = (date:any) => dayjs(date).format('DD-MM-YYYY');
+
 
   const topImageUrl = 'https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
@@ -132,27 +150,64 @@ const PropertyDetails: React.FC = () => {
         </div>
         <div className="w-full">
           <div className="flex w-full flex-col md:flex-row">
-            <div className="flex flex-col w-full bg-indigo-800">
+            <div className="flex flex-col w-full bg-gray-200">
               <div className="flex md:flex-row flex-col  justify-between p-8 items-between">
-                <div className="flex flex-col">
-                  <Typography variant="button" fontSize={35} style={typographyStyle}>
-                    {property?.address}
-                  </Typography>
-                  <Typography variant="button" style={typographyStyle}>
-                    {property?.street_address}
-                  </Typography>
-                  <Button variant="contained" style={{ marginTop:"36px", width:"30px" }}>
-                    NEW
-                  </Button>
-                </div>
-                <div className="flex flex-col md:items-end items-start">
-                  <Typography variant="button" style={typographyStyle}>
-                    Guide Price
-                  </Typography>
-                  <Typography variant="button" fontSize={35} style={typographyStyle}>
-                    {property?.amount}
-                  </Typography>
-                </div>
+                <StyledTableContainer>
+                  <Table>
+                    <TableHead>
+                    </TableHead>
+                    <TableBody>
+                      <StyledTableRow>
+                        <TableCell>Address</TableCell>
+                        <TableCell>{`${property?.street_address}, ${property?.postal_code}, ${property?.location}`}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Bedrooms</TableCell>
+                        <TableCell>{property?.bed_number}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Bathrooms</TableCell>
+                        <TableCell>{property?.bath_number}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Price</TableCell>
+                        <TableCell>{property?.amount}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Type</TableCell>
+                        <TableCell>{property?.property_type}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Features</TableCell>
+                        <TableCell>{property?.features}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Furnished</TableCell>
+                        <TableCell>{property?.furnished}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Description</TableCell>
+                        <TableCell>{property?.property_details}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Next Inspection Date</TableCell>
+                        <TableCell>{formatDate(property?.next_inspection_date)}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>EPC</TableCell>
+                        <TableCell>{property?.epc}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Student Property</TableCell>
+                        <TableCell>{property?.is_student_property ? 'Yes' : 'No'}</TableCell>
+                      </StyledTableRow>
+                      <StyledTableRow>
+                        <TableCell>Status</TableCell>
+                        <TableCell>{property?.status}</TableCell>
+                      </StyledTableRow>
+                    </TableBody>
+                  </Table>
+                </StyledTableContainer>
               </div>
               <div className="w-2/3 m-2">
                 <Divider />
@@ -169,7 +224,7 @@ const PropertyDetails: React.FC = () => {
                     Ruler
                   </Typography>
                 </div>
-                <div className="mx-4 flex flex-col md:flex-row">
+                <div className="m-4 flex flex-col md:flex-row">
                   <Typography variant="button" marginLeft={2} style={typographyStyle}>
                     <BedIcon style={iconStyle} />
                     {property?.bed_number}
