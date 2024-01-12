@@ -33,6 +33,9 @@ import { MapView } from "../../components/common/map";
 import { List, ListItem, ListItemText, Paper } from '@mui/material';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, makeStyles } from '@mui/material';
 import dayjs from 'dayjs';
+import Modal from '@mui/material/Modal';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 
 
@@ -71,9 +74,39 @@ const PropertyDetails: React.FC = () => {
   const [err, setError] = useState("");
   const [filterRequest, setFilterRequest] = useState<PropertyForm>();
   const formatDate = (date:any) => dayjs(date).format('DD-MM-YYYY');
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
 
   const topImageUrl = 'https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+  const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '90%', // Default width for small screens
+    '@media (min-width: 600px)': {
+      width: 400, // Adjust the width for small screens (sm)
+    },
+    '@media (min-width: 960px)': {
+      width: 500, // Adjust the width for medium screens (md)
+    },
+    '@media (min-width: 1280px)': {
+      width: 500, // Adjust the width for large screens (lg)
+    },
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 15,
+    p: 4,
+  };
 
   const divStyleMain = {
     backgroundImage: `url('${topImageUrl}')`,
@@ -123,6 +156,7 @@ const PropertyDetails: React.FC = () => {
               variant="contained"
               startIcon={<GalleryIcon />}
               style={{ marginRight: 8, marginBottom:8 }}
+              onClick={handleOpen}
             >
               Gallery
             </Button>
@@ -283,6 +317,30 @@ const PropertyDetails: React.FC = () => {
           </div>
         </div>
       <Container>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="gallery-modal"
+        aria-describedby="gallery-modal-description"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        >
+          <div>
+            <Box sx={style}>
+              <Button
+                style={{ position: 'absolute', top: 0, right: 0 }}
+                onClick={handleClose}
+                startIcon={<CloseIcon />}
+              />
+              <div>
+                <ImageCarousel images={property?.images.split(",")} />
+              </div>
+            </Box>
+        </div>
+      </Modal>
         {/* <Box marginTop={3} marginBottom={4}>
           <Box marginBottom={2}>
             <Typography fontSize={"2em"}>Property Details</Typography>
