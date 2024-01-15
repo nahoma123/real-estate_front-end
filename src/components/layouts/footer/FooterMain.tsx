@@ -7,10 +7,12 @@ import {
   Instagram
 } from '@material-ui/icons';
 import freelets from '../../../assets/images/thumb_freelets.png';
+import { Link } from 'react-router-dom';
+
 
 const FooterMain = () => {
   return (
-    <div className='bg-blue-950 text-white w-full flex flex-col'>
+    <div className='bg-gray-400 text-white w-full flex flex-col'>
       <div className='w-full flex items-center justify-between flex-wrap'>
         <div className='w-full sm:w-48 ml-3 mb-3 sm:mb-0'>
           <img src={freelets} alt="Freelets logo" className='w-full' />
@@ -46,27 +48,27 @@ const FooterMain = () => {
         </div>
         <div className='mb-4 sm:mb-0'>
           <p className='font-semibold text-sm mb-2'>Information</p>
-          <a href='#' className='text-sm block mb-1'>General terms and conditions</a>
-          <a href='#' className='text-sm block mb-1'>Payment terms and conditions</a>
-          <a href='#' className='text-sm block mb-1'>No Sale, No Fee</a>
-          <a href='#' className='text-sm block mb-1'>Privacy Policy</a>
-          <a href='#' className='text-sm block mb-1'>Cookie Policy</a>
-          <a href='#' className='text-sm block mb-1'>Press</a>
+          <Link to='/information/generaltermsandconditions' className='text-sm block mb-1'>General terms and conditions</Link>
+          <Link to='/information/paymenttermsandconditions' className='text-sm block mb-1'>Payment terms and conditions</Link>
+          <Link to='/information/nosalenofee' className='text-sm block mb-1'>No Sale, No Fee</Link>
+          <Link to='/information/privacypolicy' className='text-sm block mb-1'>Privacy Policy</Link>
+          <Link to='/information/cookiepolicy' className='text-sm block mb-1'>Cookie Policy</Link>
+          <Link to='/information/press' className='text-sm block mb-1'>Press</Link>
         </div>
         <div className='mb-4 sm:mb-0'>
           <p className='font-semibold text-sm mb-2'>Useful Links</p>
-          <a href='#' className='text-sm block mb-1'>Contact</a>
-          <a href='#' className='text-sm block mb-1'>FAQs</a>
-          <a href='#' className='text-sm block mb-1'>Complaints Procedure</a>
-          <a href='#' className='text-sm block mb-1'>Login</a>
-          <a href='#' className='text-sm block mb-1'>Book a free evaluation</a>
-          <a href='#' className='text-sm block mb-1'>Instant online evaluation</a>
-          <a href='#' className='text-sm block mb-1'>Property Search</a>
-          <a href='#' className='text-sm block mb-1'>Careers</a>
+          <Link to='/information/contact' className='text-sm block mb-1'>Contact</Link>
+          <Link to='/information/faqs' className='text-sm block mb-1'>FAQs</Link>
+          <Link to='/information/complaints' className='text-sm block mb-1'>Complaints Procedure</Link>
+          <Link to='/user_account/landlord' className='text-sm block mb-1'>Login</Link>
+          <Link to='/information/free-evaluation' className='text-sm block mb-1'>Book a free evaluation</Link>
+          <Link to='#' className='text-sm block mb-1'>Instant online evaluation</Link>
+          <Link to='/find_properties' className='text-sm block mb-1'>Property Search</Link>
+          <Link to='/information/carerrs' className='text-sm block mb-1'>Careers</Link>
         </div>
         <div className='w-full sm:w-48'></div>
       </div>
-      <div className='w-full bg-blue-900 px-4 sm:px-12 py-4'>
+      <div className='w-full bg-gray-600 px-4 sm:px-12 py-4'>
         <p className='text-sm text-center sm:text-left'>
           © {new Date().getFullYear()} Your Website. All rights reserved.
         </p>

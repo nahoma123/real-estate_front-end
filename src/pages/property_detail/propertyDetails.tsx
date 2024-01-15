@@ -243,7 +243,7 @@ const PropertyDetails: React.FC = () => {
                   </Table>
                 </StyledTableContainer>
               </div>
-              <div className="w-2/3 m-2">
+              <div className="mx-8 my-2">
                 <Divider />
               </div>
               <div className="flex justify-between flex-wrap">

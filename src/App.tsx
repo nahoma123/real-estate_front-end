@@ -31,6 +31,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import EditProperty from "./pages/admin_properties/editProperties";
 import { PrivateWrapper } from "./components/common/privateRoute";
 import { UpcomingInspections } from "./pages/admin_inspections/upcomming_inspections";
+import FooterComponents from "./components/footer components/FooterComponents";
 
 function About() {
   return (
@@ -117,6 +118,16 @@ function App(): JSX.Element {
                   <Contained>
                     <About />
                   </Contained>
+                }
+              />
+              <Route
+                path="/information/:info"
+                element={
+                  <MainLayout>
+                    <UnContained>
+                      <FooterComponents />
+                    </UnContained>
+                  </MainLayout>
                 }
               />
               <Route
