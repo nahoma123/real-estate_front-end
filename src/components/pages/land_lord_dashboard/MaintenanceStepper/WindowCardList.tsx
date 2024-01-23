@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Card, CardContent, Typography } from '@material-ui/core';
+import { Button, Grid, Card, CardContent, Typography } from '@material-ui/core';
 
 interface WindowCardListProps {
   data: {
@@ -9,16 +9,40 @@ interface WindowCardListProps {
 
 const WindowCardList = ({ data }:any) => {
     const [selectedCategory, setSelectedCategory] = useState<string[]>(data);
-    
+    const [breadcrumbTrail, setBreadcrumbTrail] = useState<string[]>(["Home"]);
+    const [currentPath, setCurrentPath] = useState();
     const handleSelectedList = (category: any) => {
         if(selectedCategory[category] !== null){
             setSelectedCategory(selectedCategory[category]);
+            setBreadcrumbTrail((prevTrail) => [...prevTrail, category]);
         }
         console.log(data[category])
+      };
+    
+      const handleBreadcrumbClick = (index: number) => {
+        if (index === 0) {
+          setSelectedCategory(data);
+          setBreadcrumbTrail(['Home']);
+        } else {
+          setBreadcrumbTrail((prevTrail) => prevTrail.slice(0, index + 1));
+          const lastCategory = breadcrumbTrail[index];
+          setSelectedCategory(data[lastCategory]);
+          console.log(breadcrumbTrail);
+        }
       };
 
   return (
     <div>
+        <div>
+            {breadcrumbTrail.map((breadcrumb, index) => (
+            <span key={index}>
+                <Button onClick={() => handleBreadcrumbClick(index)} variant='text' color="primary" size='small' style={{ textTransform: 'none' }}>
+                    {breadcrumb}
+                </Button>
+                {index < breadcrumbTrail.length - 1 && ' / '}
+            </span>
+            ))}
+        </div>
         {selectedCategory && Array.isArray(selectedCategory) === false && (
             <Grid container spacing={2}>
             {Object.entries(selectedCategory).map(([category, subcategories]) => (
@@ -43,14 +67,24 @@ const WindowCardList = ({ data }:any) => {
       
       {selectedCategory && Array.isArray(selectedCategory) && (
         <div>
-            {/* <Typography variant="h5">Selected Category: {selectedCategory}</Typography> */}
             <ul>
             {selectedCategory.map((subcategory: string, index: number) => (
-                <li key={index}>{subcategory}</li>
+                <li key={index}>
+                <label>
+                    <Card style={{ cursor: 'pointer', display:'flex', marginTop: 12 }}>
+                        <input type="radio" name="subcategory" value={subcategory} className='ml-2' />
+                        <CardContent>
+                            <Typography component="div" style={{ fontSize: '0.7rem' }}>
+                            {subcategory}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </label>
+                </li>
             ))}
             </ul>
         </div>
-        )}
+       )}
     </div>
   );
 };
