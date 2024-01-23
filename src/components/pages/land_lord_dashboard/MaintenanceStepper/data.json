@@ -1,0 +1,790 @@
+{
+    "Bathroom and Toilet": {
+      "Basin": {
+        "Basin on brackets": [
+          "Basin blocked",
+          "Broken basin brackets",
+          "Broken or cracked basin on brackets",
+          "Loose basin brackets",
+          "Other"
+        ],
+        "Basin on pedestal": [
+          "Basin blocked",
+          "Broken or cracked basin on pedestal",
+          "Broken or cracked pedestal",
+          "Other"
+        ],
+        "Between basin and wall": [
+          "Sealant discoloured or mouldy",
+          "Between basin and wall",
+          "Other"
+        ],
+        "Pipe leaking": [
+          "Pipe leaking and basin is on brackets",
+          "Pipe leaking behind a pedestal",
+          "Other"
+        ],
+        "Plug hole": [
+          "Plug hole blocked",
+          "Plug hole grill broken",
+          "Other"
+        ],
+        "Plug/Chain": [
+          "New plug/chain needed",
+          "Other"
+        ],
+        "Tap": [
+          "Tap broken",
+          "Tap dripping",
+          "Tap loose",
+          "Other"
+        ],
+        "Tiles": [
+          "Broken tiles (need new tiles)",
+          "Loose tiles (can be refixed)",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Bath": {
+        "Between bath and wall": [
+          "Sealant discoloured/mouldy",
+          "Water leaking between bath and wall",
+          "Other"
+        ],
+        "Pipes": [
+          "Pipe leaking",
+          "Waste pipe blocked",
+          "Other"
+        ],
+        "Plug hole": [
+          "Plug hole blocked",
+          "Plug hole grill broken",
+          "Other"
+        ],
+        "Plug/Chain": [
+          "New plug/chain needed",
+          "Other"
+        ],
+        "Tap": [
+          "Tap broken",
+          "Tap dripping",
+          "Tap loose",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Electric Shower": [
+        "No hot water",
+        "Not working at all",
+        "Other"
+      ],
+      "Extractor Fan": [
+        "Not working",
+        "Other"
+      ],
+      "Shower": {
+        "Mixer": [
+          "Shower switch broken",
+          "Other"
+        ],
+        "No water": [
+          "No cold water from shower",
+          "No hot water from shower",
+          "No water at all from shower",
+          "Other"
+        ],
+        "Plug hole": [
+          "Plug hole blocked",
+          "Plug hole grill broken",
+          "Other"
+        ],
+        "Seal/Sealant": [
+          "Sealant discoloured or mouldy",
+          "Water leaking out of shower",
+          "Other"
+        ],
+        "Shower curtain or screen": [
+          "Shower curtain damaged",
+          "Shower screen damaged",
+          "Other"
+        ],
+        "Shower head": [
+          "Does not move",
+          "Does not stay in place",
+          "Fully blocked",
+          "Partially blocked",
+          "Other"
+        ],
+        "Shower hose": [
+          "Shower hose broken or leaking",
+          "Other"
+        ],
+        "Shower tray": [
+          "Shower tray blocked",
+          "Tray (ceramic) cracked or broken",
+          "Tray (plastic) cracked or broken",
+          "Other"
+        ],
+        "Waste pipe": [
+          "Waste pipe blocked",
+          "Other"
+        ],
+        "Other": []
+      },
+      "WC/Toilet": {
+        "Cistern": [
+          "Cistern constantly flowing",
+          "Cistern needs to be refixed to wall",
+          "Cistern not filling with water",
+          "Cistern not flushing",
+          "Cistern overflowing",
+          "Cracked - high level cistern",
+          "Cracked - low level cistern",
+          "Major leak that cannot be stopped",
+          "Other"
+        ],
+        "Handle/chain": [
+          "Chain broken",
+          "Handle broken",
+          "Other"
+        ],
+        "Macerator": [
+          "Other"
+        ],
+        "Pipes": [
+          "Flush pipe blocked",
+          "Flush pipe leaking at cistern",
+          "Flush pipe leaking at joint with pan",
+          "Toilet blocked",
+          "Waste pipe leaking",
+          "Other"
+        ],
+        "Toilet seat/bowl": [
+          "Toilet bowl cracked",
+          "Toilet bowl cracked and leaking",
+          "Toilet needs to be refixed to the floor",
+          "Toilet seat broken",
+          "Toilet seat loose",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Other": []
+    },
+    "Kitchen": {
+      "Appliances": {
+        "Dishwasher": [
+          "Dishwasher does not turn on",
+          "Dishwasher does not work correctly",
+          "Other"
+        ],
+        "Freezer": [
+          "Freezer does not turn on",
+          "Freezer does not work correctly",
+          "Other"
+        ],
+        "Fridge": [
+          "Fridge does not turn on",
+          "Fridge does not work correctly",
+          "Other"
+        ],
+        "Grill": [
+          "Grill (electric) does not turn on",
+          "Grill (electric) does not work correctly",
+          "Grill (gas) does not turn on",
+          "Grill (gas) does not work correctly",
+          "Grill switch broken",
+          "Ventilator/fan not working",
+          "Other"
+        ],
+        "Hob": [
+          "Hob (electric) does not turn on",
+          "Hob (electric) does not work correctly",
+          "Hob (gas) does not turn on",
+          "Hob (gas) does not work correctly",
+          "Hob switch broken",
+          "Ventilator/extractor fan not working",
+          "Other"
+        ],
+        "Laundry": {
+          "Tumble Dryer": [
+            "Tumble dryer does not turn on",
+            "Tumble dryer does not work correctly",
+            "Other"
+          ],
+          "Washing Machine": [
+            "Washing machine does not drain",
+            "Washing machine does not turn on",
+            "Washing machine does not work correctly",
+            "Other"
+          ]
+        },
+        "Microwave": [
+          "Microwave does not turn on",
+          "Microwave does not work correctly",
+          "Other"
+        ],
+        "Oven": [
+          "Oven (electric) does not turn on",
+          "Oven (electric) does not work correctly",
+          "Oven (gas) does not turn on",
+          "Oven (gas) does not work correctly",
+          "Oven switch broken",
+          "Ventilator/fan does not work",
+          "Other"
+        ],
+        "Vacuum": [
+          "Broken parts",
+          "Poor suction",
+          "Does not turn on",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Extractor Fan": [
+        "Fan faulty",
+        "Other"
+      ],
+      "Kitchen Units and Larder": {
+        "Base/Floor unit": [
+          "Corner base/floor unit broken",
+          "Corner base/floor unit loose",
+          "Door of base/floor unit broken",
+          "Double door base/floor unit broken",
+          "Double door base/floor unit loose",
+          "Hinge handle or catch broken (specify which in fault detail)",
+          "Shelf of base/floor unit broken",
+          "Single door base/floor unit broken",
+          "Single door base/floor unit loose",
+          "Other"
+        ],
+        "Drawers": [
+          "Drawer bottom broken",
+          "Drawer broken",
+          "Drawer does not slide open or closed correctly",
+          "Drawer front broken",
+          "Drawer handle broken",
+          "Other"
+        ],
+        "Larder": [
+          "Larder door broken",
+          "Larder door loose",
+          "Larder unit broken",
+          "Other"
+        ],
+        "Wall unit": [
+          "Corner wall unit broken",
+          "Corner wall unit loose",
+          "Door of wall unit broken",
+          "Double door wall unit broken",
+          "Double door wall unit loose",
+          "Hinge handle or catch broken (specify which in notes)",
+          "Shelf of wall unit broken",
+          "Single door wall unit broken",
+          "Single door wall unit loose",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Sinks and Taps": {
+        "Leaks or blockages": [
+          "Pipe leaking under sink",
+          "Sink blocked",
+          "Washing machine blocked",
+          "Other"
+        ],
+        "Plug hole": [
+          "Plug hole blocked",
+          "Plug hole grill broken",
+          "Other"
+        ],
+        "Plug/Chain": [
+          "New plug/chain needed",
+          "Other"
+        ],
+        "Sink": [
+          "Sink top loose",
+          "Sink unit loose",
+          "Water leaking between sink and wall",
+          "Other"
+        ],
+        "Tap": [
+          "Mixer tap broken",
+          "Mixer tap leaking",
+          "Mixer tap loose",
+          "Single tap broken",
+          "Single tap leaking",
+          "Single tap loose",
+          "Other"
+        ],
+        "Tiles": [
+          "Broken tiles (need new tiles)",
+          "Loose tiles (can be refixed)",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Tiles": [
+        "Broken tiles (need new tiles)",
+        "Loose tiles (can be refixed)",
+        "Other"
+      ],
+      "Worktop": [
+        "Worktop broken (needs replacement)",
+        "Worktop damaged (needs repair)",
+        "Worktop edging damaged (needs repair)",
+        "Worktop loose",
+        "Other"
+      ],
+      "Other": []
+    },
+    "Heating and Boiler": {
+        "Electric Boiler or Heater": {
+          "Electric Boiler": [
+            "Boiler leaking",
+            "Boiler noisy",
+            "Boiler not working",
+            "Other"
+          ],
+          "Electric Heater": [
+            "Bar on electric heater not working",
+            "Electric heater loose",
+            "Electric heater not working",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Gas Boiler or Heater": {
+          "Gas Boiler": [
+            "Boiler leaking",
+            "Boiler noisy",
+            "Boiler not working",
+            "Boiler pressure high",
+            "Boiler pressure low",
+            "Other"
+          ],
+          "Gas Fire": [
+            "Gas fire loose",
+            "Gas fire not working",
+            "Radiants in fire are broken",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Oil Boiler or Heater": [
+          "Oil heater/boiler leaking",
+          "Oil heater/boiler not working",
+          "Other"
+        ],
+        "Coal or Solid Fuel Powered Heating": {
+          "Fireplace": [
+            "Chimney needs sweeping",
+            "Fire not working",
+            "Glass strips in door need replacing",
+            "Other"
+          ],
+          "Tiles": [
+            "Broken tiles (need new tiles)",
+            "Loose tiles (can be refixed)",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Heating Controls": [
+          "Heating programmer not working",
+          "Room thermostat not working",
+          "Other"
+        ],
+        "Radiator": [
+          "No heating but hot water working",
+          "No heating or hot water",
+          "Radiator leaking",
+          "Radiator loose",
+          "Radiator valve leaking",
+          "Other"
+        ],
+        "Under-floor heating": [
+          "Leak",
+          "Other"
+        ],
+        "Shared Heating": [
+          "Common Parts Heating Not Working",
+          "Heating from Shared Boiler Not Working",
+          "Other"
+        ],
+        "Other Types of Heating": {
+          "Heat Pump": [
+            "Air source heat pump not working",
+            "Ground source heat pump not working",
+            "Other"
+          ],
+          "Other": []
+        }
+      },
+      "Water and Leaks": {
+        "Leak": [
+          "Water leak from other property",
+          "Water leak within property",
+          "Other"
+        ],
+        "Water": [
+          "Limited or no running water",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Doors, Garages, and Locks": {
+        "Doorbell": [
+          "Battery powered (not working)",
+          "Wired (not working)",
+          "Door Knocker (Broken)",
+          "Not working",
+          "Other"
+        ],
+        "External door": [
+          "Door loose",
+          "Frame split",
+          "Hinge broken",
+          "PVCu door sticking",
+          "Water leaking in",
+          "Wooden door sticking",
+          "Other"
+        ],
+        "Garage Door": [
+          "Door sticking",
+          "Frame loose",
+          "Lock not working correctly",
+          "Locking bar broken",
+          "Runners are sticking",
+          "Other"
+        ],
+        "Intercom / Entry phone": [
+          "Intercom / Entry phone broken",
+          "Other"
+        ],
+        "Internal door": [
+          "Door handle broken",
+          "Door loose",
+          "Frame split",
+          "Hinge broken",
+          "PVCu door sticking",
+          "Wooden door sticking",
+          "Other"
+        ],
+        "Locks and Keys": {
+          "Back door": [
+            "Door handle broken",
+            "Mortice lock not working",
+            "Yale lock not working",
+            "Other"
+          ],
+          "Front door": [
+            "Door handle broken",
+            "Key stuck in lock",
+            "Mortice lock not working",
+            "Yale lock not working",
+            "Other"
+          ],
+          "Garage door": [
+            "Garage door lock not working correctly",
+            "Other"
+          ],
+          "Garden gate": [
+            "Lock not working",
+            "Other"
+          ],
+          "Key lost": [
+            "Key lost and property can be accessed",
+            "Key lost and property cannot be accessed",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Other": []
+      },
+      "Internal Floors, Walls, and Ceilings": {
+        "Ceiling": {
+          "Ceiling tiles": [
+            "Broken tiles (need new tiles)",
+            "Loose tiles (can be refixed)",
+            "Other"
+          ],
+          "Damp patches appearing": [
+            "You do not think that it is related to a leak",
+            "You think that it is related to a leak",
+            "Other"
+          ],
+          "Mould appearing": [
+            "In a damp/humid room such as a bathroom or kitchen",
+            "In a dry room",
+            "Other"
+          ],
+          "Plaster": [
+            "Ceiling plaster cracked (needs filling)",
+            "Ceiling plaster damaged",
+            "Other"
+          ],
+          "Plasterboard": [
+            "Ceiling plasterboard damaged",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Floors": [
+          "Carpet loose (carpet can be refixed)",
+          "Carpet ripped or damaged (need new carpet)",
+          "Floor tiles broken (need new tiles)",
+          "Floor tiles loose (tiles can be refixed)",
+          "Floorboard broken (need new floorboard)",
+          "Floorboard loose (floorboard can be refixed)",
+          "Other"
+        ],
+        "Walls": {
+          "Damp patches appearing": [
+            "Above ground floor level and you do not think it is related to a leak",
+            "Above ground floor level and you think that it is related to a leak",
+            "At ground floor level with brown 'tide mark'",
+            "At ground floor level with no brown 'tide mark'",
+            "Other"
+          ],
+          "Mould appearing": [
+            "In a damp/humid room such as a bathroom or kitchen",
+            "In a dry room",
+            "Other"
+          ],
+          "Plaster": [
+            "Ceiling plaster cracked (needs filling)",
+            "Ceiling plaster damaged",
+            "Other"
+          ],
+          "Plasterboard": [
+            "Ceiling plasterboard damaged",
+            "Other"
+          ],
+          "Skirting board": [
+            "Broken skirting board (need new skirting board)",
+            "Loose skirting board (skirting board can be refixed)",
+            "Other"
+          ],
+          "Vent": [
+            "Metal vent damaged",
+            "Metal vent loose",
+            "Plaster vent damaged",
+            "Plaster vent loose",
+            "Plastic vent damaged",
+            "Plastic vent loose",
+            "Other"
+          ],
+          "Wall tiles": [
+            "Broken tiles (need new tiles)",
+            "Loose tiles (can be refixed)",
+            "Other"
+          ],
+          "Other": []
+        }
+      },
+      "Lighting": {
+        "External Lighting": {
+          "External light": [
+            "Broken",
+            "Loose",
+            "Other"
+          ],
+          "External light switch": [
+            "Broken",
+            "Loose",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Internal Lighting": {
+          "Batten holder": [
+            "Broken",
+            "Loose",
+            "Other"
+          ],
+          "Fluorescent light tube": [
+            "Broken",
+            "Flickering",
+            "Other"
+          ],
+          "Lamp": [
+            "Lamp Broken",
+            "Other"
+          ],
+          "Light bulb": [
+            "Broken",
+            "Flickering",
+            "Other"
+          ],
+          "Light fitting": [
+            "Broken",
+            "Loose",
+            "Other"
+          ],
+          "Light switch": [
+            "Broken",
+            "Loose",
+            "Other"
+          ],
+          "Pull cord for light": [
+            "Broken",
+            "Loose",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Other": []
+      },
+      "Window": {
+        "Blinds": [
+          "Blinds Broken",
+          "Other"
+        ],
+        "Broken glass": [
+          "Above ground floor level - double glazed",
+          "Above ground floor level - single glazed",
+          "Ground floor level - double glazed",
+          "Ground floor level - single glazed",
+          "Other"
+        ],
+        "Curtains": [
+          "Curtain damaged",
+          "Curtain pole",
+          "Other"
+        ],
+        "Problem with window frame handle or cord": {
+          "Metal window frame": [
+            "Bottom handle broken",
+            "Side handle broken",
+            "Window does not open or close correctly",
+            "Window frame loose",
+            "Other"
+          ],
+          "PVCu window": [
+            "Bottom handle broken",
+            "Side handle broken",
+            "Window does not open or close correctly",
+            "Window frame loose",
+            "Other"
+          ],
+          "Sash Cord": [
+            "Sash window cord broken",
+            "Other"
+          ],
+          "Wooden window frame": [
+            "Bottom handle broken",
+            "Side handle broken",
+            "Window does not open or close correctly",
+            "Window frame loose",
+            "Window frame rotten",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Window locks": [
+          "Lock broken with window closed",
+          "Lock broken with window open",
+          "Other"
+        ],
+        "Other": []
+      },
+      "Exterior and Garden": {
+        "Decking": [
+          "Broken (needs to be replaced)",
+          "Loose (can be re-fixed)",
+          "Rotten (needs to be replaced)",
+          "Other"
+        ],
+        "In Garden": {
+          "Cesspit/Septic tank": [
+            "Cesspit blocked",
+            "Septic tank blocked",
+            "Other"
+          ],
+          "Fencing": [
+            "Concrete fence post broken",
+            "Concrete fence post loose",
+            "Fence (not timber) broken",
+            "Fence (not timber) loose",
+            "Timber fence broken",
+            "Timber fence loose",
+            "Timber fence post loose",
+            "Timber fence post broken",
+            "Other"
+          ],
+          "Garden gate": [
+            "Gate broken",
+            "Lock not working",
+            "Other"
+          ],
+          "Manholes": [
+            "Manhole cover broken",
+            "Manhole overflowing",
+            "Other"
+          ],
+          "Path": [
+            "Brick path broken",
+            "Brick path loose",
+            "Concrete path broken",
+            "Gravel path needs relaying",
+            "Other"
+          ],
+          "Paving": [
+            "Flags loose (can be refixed)",
+            "Rectangular flags broken (need to be replaced)",
+            "Square flags broken (need to be replaced)",
+            "Other"
+          ],
+          "Steps": [
+            "Brick steps broken",
+            "Brick steps loose",
+            "Concrete steps broken",
+            "Concrete steps loose",
+            "Other"
+          ],
+          "Walls": [
+            "Boundary wall collapsing",
+            "Wall shared with neighbour collapsing",
+            "Other"
+          ],
+          "Other": []
+        },
+        "On Property": {
+          "Drainpipe/downpipe for rainwater": [
+            "Drainpipe/downpipe (metal) blocked",
+            "Drainpipe/downpipe (metal) broken",
+            "Drainpipe/downpipe (metal) needs refixing",
+            "Drainpipe/downpipe (plastic) blocked",
+            "Drainpipe/downpipe (plastic) broken",
+            "Drainpipe/downpipe (plastic) needs refixing",
+            "Other"
+          ],
+          "Drains": [
+            "Blocked",
+            "Grate broken",
+            "Other"
+          ],
+          "Gutters": [
+            "Gutter (metal) blocked",
+            "Gutter (metal) broken",
+            "Gutter (metal) needs refixing",
+            "Gutter (plastic) blocked",
+            "Gutter (plastic) broken",
+            "Gutter (plastic) needs refixing",
+            "Gutter overflowing",
+            "Other"
+          ],
+          "Soil pipe": [
+            "Soil pipe blocked",
+            "Soil pipe leaking",
+            "Soil pipe needs refixing",
+            "Other"
+          ],
+          "Other": []
+        },
+        "Other": []
+      }
+  }
+  
