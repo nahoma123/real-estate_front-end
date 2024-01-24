@@ -27,7 +27,12 @@ const WindowCardList = ({ data }:any) => {
           setBreadcrumbTrail((prevTrail) => prevTrail.slice(0, index + 1));
           const lastCategory = breadcrumbTrail[index];
           setSelectedCategory(data[lastCategory]);
-          console.log(breadcrumbTrail);
+          let tempdata = data;
+          for(let i=1;i<=index;i++){
+            tempdata = tempdata[breadcrumbTrail[i]]
+          }
+          setSelectedCategory(tempdata)
+          console.log(breadcrumbTrail)
         }
       };
 
