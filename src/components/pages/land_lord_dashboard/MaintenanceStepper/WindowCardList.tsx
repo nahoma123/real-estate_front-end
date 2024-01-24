@@ -1,28 +1,46 @@
 import React, { useState } from 'react';
-import { Button, Grid, Card, CardContent, Typography } from '@material-ui/core';
+import { Button, Grid, Card, CardContent, Typography, Divider } from '@material-ui/core';
+import { Breadcrumbs } from '@mui/material';
+import TextField from '@mui/material/TextField';
+
 
 interface WindowCardListProps {
   data: {
-    [key: string]: string[];
+    [key: string]: string[] | undefined;
   };
 }
 
 const WindowCardList = ({ data }:any) => {
-    const [selectedCategory, setSelectedCategory] = useState<string[]>(data);
+    const [selectedCategory, setSelectedCategory] = useState<any>(data || [] || String);
+    const [renderTurn, setRenderTurn] = useState(true);
+    const [otherTurn, setOtherTurn] = useState(false);
     const [breadcrumbTrail, setBreadcrumbTrail] = useState<string[]>(["Home"]);
+    const [finalProblem, setFinalProblem] = useState("")
     const [currentPath, setCurrentPath] = useState();
+    const [formData, setFormData] = useState<string>('');
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData(e.target.value);
+    };
+
     const handleSelectedList = (category: any) => {
-        if(selectedCategory[category] !== null){
+        if (category === "Other"){
+          setOtherTurn(true)
+          setFinalProblem("Other")
+          setRenderTurn(false)
+        }
+        else if(selectedCategory[category] !== null){
             setSelectedCategory(selectedCategory[category]);
             setBreadcrumbTrail((prevTrail) => [...prevTrail, category]);
         }
-        console.log(data[category])
       };
     
       const handleBreadcrumbClick = (index: number) => {
+        setOtherTurn(false)
         if (index === 0) {
           setSelectedCategory(data);
           setBreadcrumbTrail(['Home']);
+          setRenderTurn(true);
         } else {
           setBreadcrumbTrail((prevTrail) => prevTrail.slice(0, index + 1));
           const lastCategory = breadcrumbTrail[index];
@@ -30,9 +48,14 @@ const WindowCardList = ({ data }:any) => {
           let tempdata = data;
           for(let i=1;i<=index;i++){
             tempdata = tempdata[breadcrumbTrail[i]]
+            if (typeof tempdata === 'string'){
+              setRenderTurn(false)
+            }
+            else{
+              setRenderTurn(true)
+            }
           }
           setSelectedCategory(tempdata)
-          console.log(breadcrumbTrail)
         }
       };
 
@@ -44,11 +67,11 @@ const WindowCardList = ({ data }:any) => {
                 <Button onClick={() => handleBreadcrumbClick(index)} variant='text' color="primary" size='small' style={{ textTransform: 'none' }}>
                     {breadcrumb}
                 </Button>
-                {index < breadcrumbTrail.length - 1 && ' / '}
+                {index < breadcrumbTrail.length - 1 && '/'}
             </span>
             ))}
         </div>
-        {selectedCategory && Array.isArray(selectedCategory) === false && (
+        {selectedCategory && renderTurn && Array.isArray(selectedCategory) === false && (
             <Grid container spacing={2}>
             {Object.entries(selectedCategory).map(([category, subcategories]) => (
               <Grid item xs={12} md={3} key={category}>
@@ -70,13 +93,13 @@ const WindowCardList = ({ data }:any) => {
         )
         }
       
-      {selectedCategory && Array.isArray(selectedCategory) && (
+      {selectedCategory && renderTurn && Array.isArray(selectedCategory) && (
         <div>
             <ul>
             {selectedCategory.map((subcategory: string, index: number) => (
                 <li key={index}>
                 <label>
-                    <Card style={{ cursor: 'pointer', display:'flex', marginTop: 12 }}>
+                    <Card onClick={() => {setRenderTurn(false); setOtherTurn(false); setFinalProblem(subcategory) }} style={{ cursor: 'pointer', display:'flex', marginTop: 12 }}>
                         <input type="radio" name="subcategory" value={subcategory} className='ml-2' />
                         <CardContent>
                             <Typography component="div" style={{ fontSize: '0.7rem' }}>
@@ -90,6 +113,35 @@ const WindowCardList = ({ data }:any) => {
             </ul>
         </div>
        )}
+       {
+        renderTurn === false && (
+          <div>
+            <label>
+                <Card style={{ cursor: 'pointer', display:'flex', marginTop: 12 }}>
+                    <input type="radio" name="subcategory"  className='ml-2' />
+                    <CardContent>
+                        <Typography component="div" style={{ fontSize: '0.7rem' }}>
+                        { finalProblem }
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </label>
+            <Divider style={{marginTop:20, marginBottom:20}} />
+            <form>
+              <TextField
+                label="Fault Details *"
+                variant="outlined"
+                fullWidth
+                multiline
+                rows={4}
+                value={formData}
+                onChange={handleInputChange}
+                margin="normal"
+              />
+            </form>
+          </div>
+        )
+       }
     </div>
   );
 };
