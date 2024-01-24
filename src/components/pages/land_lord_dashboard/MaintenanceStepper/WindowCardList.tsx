@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Grid, Card, CardContent, Typography, Divider } from '@material-ui/core';
-import { Breadcrumbs } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-
-interface WindowCardListProps {
-  data: {
-    [key: string]: string[] | undefined;
-  };
-}
 
 const WindowCardList = ({ data }:any) => {
     const [selectedCategory, setSelectedCategory] = useState<any>(data || [] || String);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import WindowCardList from './WindowCardList';
 import jsonData from './data.json'
 
