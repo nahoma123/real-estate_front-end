@@ -3,7 +3,7 @@ import { Button, Grid, Card, CardContent, Typography, Divider } from '@material-
 import TextField from '@mui/material/TextField';
 
 
-const WindowCardList = ({ data }:any) => {
+const WindowCardList = ({ data, setProblemDetails, setBreadCrumbTrailPath }:any) => {
     const [selectedCategory, setSelectedCategory] = useState<any>(data || [] || String);
     const [renderTurn, setRenderTurn] = useState(true);
     const [otherTurn, setOtherTurn] = useState(false);
@@ -13,6 +13,7 @@ const WindowCardList = ({ data }:any) => {
     const [formData, setFormData] = useState<string>('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setProblemDetails(e.target.value)
       setFormData(e.target.value);
     };
 
@@ -25,17 +26,21 @@ const WindowCardList = ({ data }:any) => {
         else if(selectedCategory[category] !== null){
             setSelectedCategory(selectedCategory[category]);
             setBreadcrumbTrail((prevTrail) => [...prevTrail, category]);
+            setBreadCrumbTrailPath((prevTrail:any) => [...prevTrail, category])
         }
       };
     
       const handleBreadcrumbClick = (index: number) => {
         setOtherTurn(false)
+        setProblemDetails("")
         if (index === 0) {
           setSelectedCategory(data);
           setBreadcrumbTrail(['Home']);
+          setBreadCrumbTrailPath(['Home'])
           setRenderTurn(true);
         } else {
           setBreadcrumbTrail((prevTrail) => prevTrail.slice(0, index + 1));
+          setBreadCrumbTrailPath((prevTrail:any) => prevTrail.slice(0, index + 1))
           const lastCategory = breadcrumbTrail[index];
           setSelectedCategory(data[lastCategory]);
           let tempdata = data;

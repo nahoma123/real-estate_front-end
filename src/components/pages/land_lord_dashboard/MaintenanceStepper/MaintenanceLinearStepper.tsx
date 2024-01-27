@@ -13,15 +13,60 @@ import ContactandAddress from './ContactandAddress';
 
 const steps = ['What is the problem>', 'Add Images, videos/audio', 'Contact and Address Details'];
 
-const stepComponents = [
-  <Problems key="Step1" />,
-  <AddDocuments key="Step2" />,
-  <ContactandAddress key="Step3" />,
-];
+interface FormData {
+  personalInformation: {
+    title: string;
+    firstname: string;
+    surname: string;
+    email: string;
+    phoneNumber: string;
+    otherPhoneNumber: string;
+  };
+  addressInformation: {
+    address: string;
+    city: string;
+    postcode: string;
+  };
+  additionalInformation: {
+    alarmInformation: string;
+    petInformation: string;
+    furtherNotes: string;
+    vulnerableOccupier: boolean;
+    agreeTerms: boolean;
+    agreePrivacyNotice: boolean;
+  };
+}
 
 export default function MaintenanceLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [uploadedFiles, setUploadedFiles] = React.useState<FileList | null>(null);
+  const [problemDetails, setProblemDetails] = React.useState<string>("");
+  const [breadcrumbTrailPath, setBreadCrumbTrailPath] = React.useState([]);
   const [skipped, setSkipped] = React.useState(new Set<number>());
+
+  const [formDatas, setFormDatas] = React.useState<FormData>({
+    personalInformation: {
+      title: '',
+      firstname: '',
+      surname: '',
+      email: '',
+      phoneNumber: '',
+      otherPhoneNumber: '',
+    },
+    addressInformation: {
+      address: '',
+      city: '',
+      postcode: '',
+    },
+    additionalInformation: {
+      alarmInformation: '',
+      petInformation: '',
+      furtherNotes: '',
+      vulnerableOccupier: false,
+      agreeTerms: false,
+      agreePrivacyNotice: false,
+    },
+  });
 
   const isStepOptional = (step: number) => {
     return step === -1;
@@ -37,11 +82,31 @@ export default function MaintenanceLinearStepper() {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+  
+    if (activeStep === 0 && problemDetails === "") {
+      console.error('Please provide problem details before proceeding to the next step.');
+    } else if (activeStep === 1 && (!uploadedFiles || uploadedFiles.length < 1)) {
+      console.error('Please upload at least one file before proceeding to the next step.');
+    } else {
+      if (activeStep === steps.length - 1) {
+        // Final step, log the necessary data
+        console.log('Final Step - Data:', {
+          problemDetails,
+          breadcrumbTrailPath,
+          formDatas,
+        });
+      }
+  
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
+    }
   };
+  
 
+  const handleDocumentsUpload = (files: FileList | null) => {
+    console.log('Uploaded files:', files);
+    setUploadedFiles(files);
+  };
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
@@ -60,8 +125,15 @@ export default function MaintenanceLinearStepper() {
   };
 
   const handleReset = () => {
+    setProblemDetails("")
     setActiveStep(0);
   };
+
+  const stepComponents = [
+    <Problems key="Step1" setProblemDetails={setProblemDetails} setBreadCrumbTrailPath={setBreadCrumbTrailPath} />,
+    <AddDocuments key="Step2" onDocumentsUpload={handleDocumentsUpload} onFinish={handleNext} />,
+    <ContactandAddress key="Step3" setFormDatas={setFormDatas} />,
+  ];
 
   return (
     <Box sx={{ width: '100%' }}>

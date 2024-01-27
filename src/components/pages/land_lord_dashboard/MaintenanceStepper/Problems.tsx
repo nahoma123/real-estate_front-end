@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import WindowCardList from './WindowCardList';
 import jsonData from './data.json'
 
-const Problems = () => {
+const Problems = ({ setProblemDetails, setBreadCrumbTrailPath}:any) => {
   useEffect(() => {
     
   }, [])
   return (
     <div>
-      <WindowCardList data={jsonData} />
+      <WindowCardList data={jsonData} setProblemDetails={setProblemDetails} setBreadCrumbTrailPath={setBreadCrumbTrailPath} />
     </div>
   )
 }

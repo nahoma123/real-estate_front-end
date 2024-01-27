@@ -1,13 +1,25 @@
-import React from 'react';
+// AddDocuments.js
+import React, { useState } from 'react';
 import FileUploader from './FileUploader';
-import { Typography, Divider } from '@material-ui/core';
+import { Typography, Divider, Button } from '@mui/material';
 
-const AddDocuments: React.FC = () => {
+interface AddDocumentsProps {
+  onDocumentsUpload: (files: FileList | null) => void;
+  onFinish: (files: FileList | null) => void;
+}
+
+const AddDocuments: React.FC<AddDocumentsProps> = ({ onDocumentsUpload, onFinish }) => {
+  const [documentsUploaded, setDocumentsUploaded] = useState<boolean>(false);
+
   const handleFileUpload = (files: FileList | null) => {
-    if (files) {
-      // Perform file upload logic here
-      console.log('Uploaded files:', files);
-    }
+    onDocumentsUpload(files);
+    setDocumentsUploaded(true);
+  };
+
+  const handleFinish = (files: FileList | null) => {
+    onFinish(files);
+    // Optionally, reset state or perform cleanup here
+    setDocumentsUploaded(false);
   };
 
   return (
@@ -16,6 +28,11 @@ const AddDocuments: React.FC = () => {
         Attach files
       </Typography>
       <FileUploader onFileUpload={handleFileUpload} />
+      {documentsUploaded && (
+        <div>
+          <Divider />
+        </div>
+      )}
     </div>
   );
 };
