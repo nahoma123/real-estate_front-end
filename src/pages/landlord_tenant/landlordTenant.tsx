@@ -25,6 +25,11 @@ import MyContract from "./page_section/MyContract";
 import Messages from "./page_section/Messages";
 import Properties from "./page_section/Properties";
 import DashboardLandlord from "./page_section/DashboardLandlord";
+import Inspection from "./page_section/Inspection";
+import Rent from "./page_section/Rent";
+import Compliance from "./page_section/Compliance";
+import Communication from "./page_section/Communication";
+import Maintenance from "./page_section/Maintenance";
 
 const BlackBackground = styled("div")({
   backgroundColor: "#333",
@@ -128,19 +133,33 @@ const FreeLetsHub: React.FC = () => {
   //       selectedButton={selectedButton}
   //     />
   //   );
-  if (params.subRoute === "dashboard") {
-    component = <div><DashboardLandlord/></div>
+  if (params.subRoute === "dashboard") { component = <div></div>
   }else if(params.subRoute === "notification"){
     component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Notification/></div>
   }
   else if(params.subRoute === "mycontracts"){
-    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><MyContract/></div>
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><MyContract/></div>
   }
   else if(params.subRoute === "messages"){
-    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Messages/></div>
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex"}}><Messages/></div>
   }
   else if(params.subRoute === "properties"){
     component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Properties/></div>
+  }
+  else if(params.subRoute === "inspection"){
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><Inspection /></div>
+  }
+  else if(params.subRoute === "rent"){
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><Rent/></div>
+  }
+  else if(params.subRoute === "compliance"){
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><Compliance/></div>
+  }
+  else if(params.subRoute === "communication"){
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><Communication/></div>
+  }
+  else if(params.subRoute === "maintenance"){
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><Maintenance/></div>
   }
    else {
     component = <></>;
@@ -166,8 +185,11 @@ const FreeLetsHub: React.FC = () => {
           >
             <HubOptions />
           </Grid>
-          <Grid item xs={12} sm={9} md={9} lg={9}>
-            {component}
+          <Grid item xs={12} sm={9} md={9} lg={9} >
+            <div className="my-8 border-2 rounded-lg shadow" style={{ minHeight: "500px" }}>
+              <DashboardLandlord/>
+              {component}
+            </div>
           </Grid>
         </Grid>
       </Container>

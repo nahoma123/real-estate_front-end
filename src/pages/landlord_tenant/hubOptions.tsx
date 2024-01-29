@@ -12,8 +12,14 @@ import HouseIcon from '@mui/icons-material/House';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from '@mui/icons-material/Close';
 
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import ChatIcon from '@mui/icons-material/Chat';
+import BuildIcon from '@mui/icons-material/Build';
+
 const HubOptionsContainer = styled(Box)(({ theme }) => ({
   width: "240px",
+  height: "500px",
   flexShrink: 0,
   margin: "0px",
   marginTop: "40px",
@@ -49,6 +55,21 @@ const HubOptionButton: React.FC<HubOptionButtonProps> = ({
       break;
     case 'Properties':
       icon = <HouseIcon />;
+      break;
+    case 'Inspection':
+      icon = <HandymanIcon />;
+      break;
+    case 'Rent':
+      icon = <MonetizationOnIcon />;
+      break;
+    case 'Compliance':
+      icon = <AssignmentIcon />;
+      break;
+    case 'Communication':
+      icon = <ChatIcon />;
+      break;
+    case 'Maintenance':
+      icon = <BuildIcon />;
       break;
     default:
       icon = null;
@@ -100,6 +121,21 @@ const HubOptions: React.FC = () => {
       case 'Properties':
         navigate("/landlord/properties");
         break;
+      case 'Inspection':
+        navigate("/landlord/inspection");
+        break;
+      case 'Rent':
+        navigate("/landlord/rent");
+        break;
+      case 'Compliance':
+        navigate("/landlord/compliance");
+        break;
+      case 'Communication':
+        navigate("/landlord/communication");
+        break;
+      case 'Maintenance':
+        navigate("/landlord/maintenance");
+        break;
       default:
         // Handle other cases if needed
     }
@@ -150,6 +186,36 @@ const HubOptions: React.FC = () => {
             </ListItemIcon>
             Properties
           </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Inspection")}>
+            <ListItemIcon>
+              <HandymanIcon />
+            </ListItemIcon>
+            Inspection
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Rent")}>
+            <ListItemIcon>
+              <MonetizationOnIcon />
+            </ListItemIcon>
+            Rent
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Compliance")}>
+            <ListItemIcon>
+              <AssignmentIcon />
+            </ListItemIcon>
+            Compliance
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Communication")}>
+            <ListItemIcon>
+            <ChatIcon />
+            </ListItemIcon>
+            Communication
+          </MenuItem>
+          <MenuItem onClick={() => handleTabClick("Maintenance")}>
+            <ListItemIcon>
+              <BuildIcon />
+            </ListItemIcon>
+            Maintenance
+          </MenuItem>
         </Menu>
       </div>
     );
@@ -174,17 +240,17 @@ const HubOptions: React.FC = () => {
             label="Dashboard"
             handleTabClick={handleTabClick}
           />
-          <HubOptionButton
+          {/* <HubOptionButton
             activeTab={activeTab}
             label="Notification"
             handleTabClick={handleTabClick}
-          />
+          /> */}
           <HubOptionButton
             activeTab={activeTab}
             label="My Contract"
             handleTabClick={handleTabClick}
           />
-          <HubOptionButton
+          {/* <HubOptionButton
             activeTab={activeTab}
             label="Messages"
             handleTabClick={handleTabClick}
@@ -192,6 +258,31 @@ const HubOptions: React.FC = () => {
           <HubOptionButton
             activeTab={activeTab}
             label="Properties"
+            handleTabClick={handleTabClick}
+          /> */}
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Inspection"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Rent"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Compliance"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Communication"
+            handleTabClick={handleTabClick}
+          />
+          <HubOptionButton
+            activeTab={activeTab}
+            label="Maintenance"
             handleTabClick={handleTabClick}
           />
         </List>
