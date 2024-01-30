@@ -129,17 +129,17 @@ const FreeLetsHubTenant: React.FC = () => {
 //     );
 //   }
   if (params.subRoute === "dashboard") {
-    component = <> <DashboardSecond/> </>
+    component = <></>
   }
   
   else if(params.subRoute === "maintenance"){
-    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}} > <Maintenance/> </div>
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}} > <Maintenance/> </div>
   }
   else if(params.subRoute === "mycontracts"){
-    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><MyContracts/></div>
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><MyContracts/></div>
   }
   else if(params.subRoute === "messages"){
-    component = <div className="my-8 border-2 rounded-lg shadow" style={{minHeight:"500px"}}><Messages/></div>
+    component = <div className="mx-8" style={{minHeight:"500px", display:"flex", justifyContent:"center"}}><Messages/></div>
   }
    else {
     component = <></>;
@@ -166,8 +166,11 @@ const FreeLetsHubTenant: React.FC = () => {
           >
             <HubOptions />
           </Grid>
-          <Grid item xs={12} sm={9} md={9} lg={9}>
-            {component}
+          <Grid item xs={12} sm={9} md={9} lg={9} >
+            <div className="my-8 border-2 rounded-lg shadow" style={{ minHeight: "500px" }}>
+              <DashboardSecond/>
+              {component}
+            </div>
           </Grid>
         </Grid>
       </Container>

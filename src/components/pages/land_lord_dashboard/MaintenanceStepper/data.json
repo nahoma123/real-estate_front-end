@@ -785,6 +785,52 @@
           "Other": []
         },
         "Other": []
+      },
+      "Laundry": {
+        "Tumble dryer": [
+          "Tumble dryer does not turn on",
+          "Tumble dryer does not work correctly",
+          "Other"
+        ],
+        "Washing machine": [
+          "Washing machine does not drain",
+          "Washing machine does not turn on",
+          "Washing machine does not work correctly",
+          "Washing machine leaking",
+          "Other"
+        ],
+        "other": []
+      },
+      "Furniture": {
+        "Bed": [
+          "Bed broken",
+          "Other"
+        ],
+        "Bedside Table": [
+          "Bedside Table Broken",
+          "Other"
+        ],
+        "Bookcase": [
+          "Bookcase Broken",
+          "Other"
+        ],
+        "Chest of Drawers": [
+          "Chest of Drawers Broken",
+          "Other"
+        ],
+        "Sofa": [
+          "Sofa Broken",
+          "Other"
+        ],
+        "Table": [
+          "Table Broken",
+          "Other"
+        ],
+        "Wardrobe": [
+          "Wardrobe Broken",
+          "Other"
+        ],
+        "other": []
       }
   }
   

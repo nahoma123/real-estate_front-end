@@ -96,7 +96,7 @@ const DashboardSecond = () => {
   }, []);
 
   return (
-    <div className="my-8 border-2 rounded-lg shadow pt-8" style={{ minHeight: "500px" }}>
+    <div className="pt-4" style={{}}>
     <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row'>
         <CustomListItem address={selectedUserRental?.address} status={selectedUserRental?.status} />
         <div className='mx-4 sm:mx-8 md:mx-8 lg:mx-8 mt-4 sm:mt-0 md:mt-0 lg:mt-0'>

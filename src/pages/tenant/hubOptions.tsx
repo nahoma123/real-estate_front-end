@@ -14,6 +14,7 @@ import CloseIcon from '@material-ui/icons/Close';
 const HubOptionsContainer = styled(Box)(({ theme }) => ({
   width: "240px",
   flexShrink: 0,
+  height:'400px',
   margin: "0px",
   marginTop: "40px",
   backgroundColor: lighten(theme.palette.action.disabledBackground, 0.8),
@@ -143,7 +144,6 @@ const HubOptions: React.FC = () => {
   }
 
   return (
-    <div className="">
       <HubOptionsContainer>
         <Box display={"flex"} flexDirection={"column"} padding={2}>
           <Typography
@@ -180,7 +180,6 @@ const HubOptions: React.FC = () => {
           </List>
         </Box>
       </HubOptionsContainer>
-    </div>
   );
 };
 
