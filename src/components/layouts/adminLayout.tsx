@@ -180,6 +180,41 @@ function CustomDrawer({ selectedItem, open, handleDrawerClose }: any) {
             <ListItemText primary={"Maintenance"} />
           </ListItemButton>
         </ListItem>
+
+        <ListItem
+          onClick={() => navigate("/admin_dashboard/listings")}
+          disablePadding
+          sx={{
+            backgroundColor: selectedItem.includes("listings")
+              ? lighten(theme.palette.primary.light, 0.6)
+              : "inherit",
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Listings"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem
+          onClick={() => navigate("/admin_dashboard/management")}
+          disablePadding
+          sx={{
+            backgroundColor: selectedItem.includes("management")
+              ? lighten(theme.palette.primary.light, 0.6)
+              : "inherit",
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Management"} />
+          </ListItemButton>
+        </ListItem>
+
       </List>
       <Divider />
     </Drawer>

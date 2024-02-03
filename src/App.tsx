@@ -32,6 +32,9 @@ import EditProperty from "./pages/admin_properties/editProperties";
 import { PrivateWrapper } from "./components/common/privateRoute";
 import { UpcomingInspections } from "./pages/admin_inspections/upcomming_inspections";
 import FooterComponents from "./components/footer components/FooterComponents";
+import AdminMaintenance from "./pages/admin_maintenance/AdminMaintenance";
+import AdminListings from "./pages/admin_listings/AdminListings";
+import AdminManagement from "./pages/admin_management/AdminManagement";
 
 function About() {
   return (
@@ -255,6 +258,30 @@ function App(): JSX.Element {
                   element={
                     <PrivateWrapper>
                       <UpcomingInspections />
+                    </PrivateWrapper>
+                  }
+                />
+                <Route
+                  path="maintenance_requests"
+                  element={
+                    <PrivateWrapper>
+                      <AdminMaintenance />
+                    </PrivateWrapper>
+                  }
+                />
+                <Route
+                  path="Listings"
+                  element={
+                    <PrivateWrapper>
+                      <AdminListings />
+                    </PrivateWrapper>
+                  }
+                />
+                <Route
+                  path="Management"
+                  element={
+                    <PrivateWrapper>
+                      <AdminManagement />
                     </PrivateWrapper>
                   }
                 />

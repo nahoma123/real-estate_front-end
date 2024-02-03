@@ -3,45 +3,50 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {
   Grid,
   TextField,
-  MenuItem,
   Box,
   Typography,
-  Modal,
-  useMediaQuery,
   Button,
+  Autocomplete,
 } from "@mui/material";
-import axios from "axios";
-import {
-  NextPlan,
-  NextPlanTwoTone,
-  Search,
-  SkipNextOutlined,
-  Toc,
-} from "@mui/icons-material";
-import { GetAddressUrl } from "../../constants/api";
-import { ObjectType } from "typescript";
-import {
-  postcodeValidator,
-  postcodeValidatorExistsForCountry,
-} from "postcode-validator";
-
 import { useSnackbar } from "notistack";
-
-// Full address string
 
 type BookValuationProps = {};
 
 type Address = {
   address: string;
+  postcode: string;
 };
+
+const jsonAddresses: Address[] = [
+  {
+    address: "123 Main Street, CityA, CountryA",
+    postcode: "10001",
+  },
+  {
+    address: "456 Oak Avenue, CityB, CountryB",
+    postcode: "20002",
+  },
+  {
+    address: "789 Pine Lane, CityC, CountryC",
+    postcode: "30003",
+  },
+  {
+    address: "101 Elm Road, CityD, CountryD",
+    postcode: "40004",
+  },
+  {
+    address: "202 Maple Drive, CityE, CountryE",
+    postcode: "50005",
+  },
+];
 
 function BookValuation({}: BookValuationProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [postcode, setPostcode] = useState("");
   const [address, setAddress] = useState<string>("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [addressesForPostcode, setAddressesForPostcode] = useState<string[]>([]);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -50,63 +55,49 @@ function BookValuation({}: BookValuationProps) {
   }, [location.search]);
 
   const handlePostcodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPostcode(event.target.value);
+    const newInputValue = event.target.value;
+    setPostcode(newInputValue);
+
+    // Filter addresses based on the entered postcode
+    const addressesForPostcode = jsonAddresses
+      .filter((address) => address.postcode === newInputValue)
+      .map((address) => address.address);
+
+    // Update the addresses based on the entered postcode
+    setAddressesForPostcode(addressesForPostcode);
   };
 
   const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(event.target.value);
   };
 
-  // const handleFindAddress = async () => {
-  //   try {
-  //     const response = await axios.get(GetAddressUrl(postcode));
-  //     const result = response?.data?.suggestions;
-  //     console.log("Result-", result);
-  //     if (result && result.length > 0) {
-  //       setAddresses(result); // Update addresses with the list of address objects
-  //       setIsModalOpen(true);
-  //     } else {
-  //       setIsModalOpen(false);
-  //       setAddresses([]); // Clear the addresses if there are no results
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching addresses:", error);
-  //     setIsModalOpen(false);
-  //   }
-  // };
-
-  const handleAddressClick = (address: string) => {
+  const handleAddressClick = () => {
     if (!postcode || !address) {
-      enqueueSnackbar("fill both postcode and address to proceed", {
-        variant: "error",
-      });
-      // Show an error message or perform any necessary action
-      return;
-    }
-
-    // Validate the postcode format
-    if (!postcodeValidator(postcode, "UK")) {
-      console.log(postcode);
-      // Show an error message or perform any necessary action
-      enqueueSnackbar("postcode should be a valid postcode", {
+      enqueueSnackbar("Fill both postcode and address to proceed", {
         variant: "error",
       });
       return;
     }
 
-    if (!(address.split(",").length >= 2)) {
-      console.log("Address", address.split(",").length);
-      enqueueSnackbar("please enter the full address", {
-        variant: "error",
-      });
-      return;
-    }
+    const selectedAddress = jsonAddresses.find(
+      (jsonAddress) =>
+        jsonAddress.address.includes(address) && jsonAddress.postcode === postcode
+    );
 
-    sessionStorage.setItem("address", address);
-    navigate(`/book_valuation_registration?value=${postcode}`);
+    if (selectedAddress) {
+      sessionStorage.setItem("address", selectedAddress.address);
+      navigate(`/book_valuation_registration?value=${postcode}`);
+    } else {
+      // Handle the case when the entered postcode is not in the JSON data
+      enqueueSnackbar("Postcode not found in the provided list. Proceeding with entered data.", {
+        variant: "warning",
+      });
+
+      // You can choose to proceed with the entered data or handle it as needed.
+      sessionStorage.setItem("address", address);
+      navigate(`/book_valuation_registration?value=${postcode}`);
+    }
   };
-
-  const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"));
 
   return (
     <Box>
@@ -134,31 +125,74 @@ function BookValuation({}: BookValuationProps) {
           </Box>
 
           <Box margin={3}>
-            <TextField
-              label="Enter postcode"
-              value={postcode}
-              onChange={handlePostcodeChange}
-              variant="outlined"
-              fullWidth
+            {/* Use Autocomplete for postcode autocompletion */}
+            <Autocomplete
+              options={jsonAddresses.map((option) => option.postcode)}
+              freeSolo
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Enter postcode"
+                  value={postcode}
+                  onChange={handlePostcodeChange}
+                  variant="outlined"
+                  fullWidth
+                />
+              )}
+              inputValue={postcode}
+              onInputChange={(event, newInputValue) => {
+                setPostcode(newInputValue);
+                // Filter addresses based on the entered postcode
+                const addressesForPostcode = jsonAddresses
+                  .filter((address) => address.postcode === newInputValue)
+                  .map((address) => address.address);
+                // Update the addresses based on the entered postcode
+                setAddressesForPostcode(addressesForPostcode);
+              }}
+              selectOnFocus
+              clearOnBlur
+              getOptionLabel={(option) => option}
+              onChange={(event, newValue:any) => {
+                setPostcode(newValue);
+                // Filter addresses based on the selected postcode
+                const addressesForPostcode = jsonAddresses
+                  .filter((address) => address.postcode === newValue)
+                  .map((address) => address.address);
+                // Update the addresses based on the selected postcode
+                setAddressesForPostcode(addressesForPostcode);
+              }}
             />
           </Box>
           <Box margin={3}>
-            <TextField
-              label="Enter full Address"
-              value={address}
-              onChange={handleAddressChange}
-              variant="outlined"
-              fullWidth
+            {/* Use Autocomplete for addresses */}
+            <Autocomplete
+              options={addressesForPostcode}
+              freeSolo
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Enter full Address"
+                  value={address}
+                  onChange={handleAddressChange}
+                  variant="outlined"
+                  fullWidth
+                />
+              )}
+              inputValue={address}
+              onInputChange={(event, newInputValue) => {
+                setAddress(newInputValue);
+              }}
+              selectOnFocus
+              clearOnBlur
             />
           </Box>
 
           <Grid item xs={12}>
             <Box margin={3}>
               <Button
-                endIcon={<Toc />}
                 style={{ borderRadius: "0px", width: "100%" }}
                 variant="contained"
-                onClick={() => handleAddressClick(address)}
+                onClick={() => handleAddressClick()}
               >
                 Next
               </Button>
@@ -167,52 +201,6 @@ function BookValuation({}: BookValuationProps) {
         </Grid>
         <Grid md={3} xs={0}></Grid>
       </Grid>
-      {/* 
-      <Modal
-        open={isModalOpen}
-        onClose={handleModalClose}
-        aria-labelledby="modal-title"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          sx={{
-            bgcolor: "background.paper",
-            boxShadow: 24,
-            p: 4,
-            width: isMobile ? "90%" : "60%",
-            maxWidth: 600,
-          }}
-        >
-          <Typography variant="h6" id="modal-title" gutterBottom>
-            Select Address
-          </Typography>
-          {/* <TextField
-            label="Select address"
-            select
-            variant="outlined"
-            fullWidth
-            value={selectedAddress}
-            onChange={(event) => setSelectedAddress(event.target.value)}
-          >
-            {addresses.map((address, index) => {
-              console.log("Address", address);
-              return (
-                <MenuItem
-                  key={index}
-                  value={address?.address}
-                  onClick={() => handleAddressClick(address?.address)}
-                >
-                  {address?.address}
-                </MenuItem>
-              );
-            })}
-          </TextField> */}
-      {/* </Box> */}
-      {/* </Modal> */}
     </Box>
   );
 }
